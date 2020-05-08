@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+//@import "app/theme/style/custom-tailwind/base.scss";
+
+@import "tailwindcss/components";
+//@import "app/theme/style/custom-tailwind/components.scss";
+
+@import "tailwindcss/utilities";
+@import "app/theme/style/custom-tailwind/utilities.scss";
+//@import "app/theme/style/_override.scss";
+
+
+:root {
+  --color-primary: #cc0000;
+  --color-secondary: #c0c0c0;
+}
