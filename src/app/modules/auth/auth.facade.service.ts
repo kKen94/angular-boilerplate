@@ -1,20 +1,21 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AuthApi } from './api';
 import { Login, Logout, RecoverPassword } from './state/auth/auth.actions';
-import { Actions, ofActionDispatched, ofActionSuccessful, Store } from '@ngxs/store';
+import {Actions, ofActionDispatched, ofActionSuccessful, Select, Store} from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
-import { AUTH_STATE_TOKEN } from './state/auth/auth.state';
+import {AUTH_STATE_TOKEN, AuthState} from './state/auth/auth.state';
 import {
-  SetFormDirty,
   SetFormPristine,
-  UpdateForm,
-  UpdateFormDirty,
   UpdateFormStatus,
   UpdateFormValue
 } from '@ngxs/form-plugin';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class AuthFacade {
+
+  @Select(AuthState.loginFormValidation) isLoginValid$: Observable<boolean>;
+  @Select(AuthState.passwordRecoveryFormValidation) isPasswordRecoveryValid$: Observable<boolean>;
 
   constructor(
     private authApi: AuthApi,

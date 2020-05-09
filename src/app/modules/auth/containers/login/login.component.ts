@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
 
   loginForm: FormGroup;
+  isFormValid: boolean;
 
   constructor(
     private authFacade: AuthFacade,
@@ -18,6 +19,7 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+    this.authFacade.isLoginValid$.subscribe(isValid => this.isFormValid = isValid);
   }
 
   login(): void {

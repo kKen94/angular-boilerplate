@@ -54,6 +54,16 @@ export class AuthState {
     return state.callbackUrl;
   }
 
+  @Selector([AUTH_STATE_TOKEN])
+  static loginFormValidation(state: AuthStateModel) {
+    return state.loginForm.status === 'VALID';
+  }
+
+  @Selector([AUTH_STATE_TOKEN])
+  static passwordRecoveryFormValidation(state: AuthStateModel) {
+    return state.recoveryForm.status === 'VALID';
+  }
+
   constructor(
     private authApi: AuthApi,
   ) { }

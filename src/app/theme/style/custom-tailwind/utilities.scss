@@ -4,6 +4,10 @@
   &:focus {
     @apply outline-none !important;
   }
+  &:disabled {
+    @apply opacity-50;
+    @apply cursor-not-allowed;
+  }
 }
 
 .full {
@@ -28,11 +32,6 @@
 //  //  @apply bg-#{"" + $color}-100;
 //  //}
 //}
-
-.disabled {
-  @apply opacity-50;
-  @apply cursor-not-allowed;
-}
 
 /**********************************************************************************************************************************************************/
 
