@@ -7,5 +7,5 @@ export class Logout {
 }
 
 export class RecoverPassword {
-  static readonly type = '[Auth] Recover Password'
+  static readonly type = '[Auth] Recover Password';
 }
