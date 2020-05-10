@@ -2,7 +2,7 @@
 
 * {
   &:focus {
-    @apply outline-none !important;
+    @apply outline-none #{!important};
   }
   &:disabled {
     @apply opacity-50;
@@ -15,24 +15,6 @@
   @apply h-full;
 }
 
-//@each $color in $colors {
-//  .btn-#{$color} {
-//    @apply px-4;
-//    @apply py-2;
-//    @apply border;
-//    @apply border-gray-200;
-//    //@apply border-#{$color};
-//    @apply rounded;
-//    @apply bg-transparent;
-//    @apply text-#{$color}-500;
-//    transition: 300ms;
-//  }
-//
-//  //.btn-#{""+$color}:hover {
-//  //  @apply bg-#{"" + $color}-100;
-//  //}
-//}
-
 /**********************************************************************************************************************************************************/
 
 /*********************************************************************** ELEMENTS *************************************************************************/
@@ -42,25 +24,22 @@
 
 /***************************************                       buttons                        *********************************************/
 
-  .btn-red {
+@each $color in $colors {
+  .btn-#{$color} {
     @apply px-4;
     @apply py-2;
     @apply border;
-    @apply border-gray-400;
-    //@apply border-red-500;
-    @apply rounded-full;
+    @apply border-gray-200;
+    @apply rounded;
     @apply bg-transparent;
-    @apply text-red-700;
+    @apply text-#{$color}-500;
     transition: 300ms;
 
-    //&:hover {
-    //  @apply bg-red-100;
-    //}
-
     &:active {
-      @apply bg-red-100;
+      @apply bg-#{$color}-100;
     }
   }
+}
 
 /***************************************                       inputs                        *********************************************/
 

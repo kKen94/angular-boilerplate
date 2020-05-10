@@ -15,6 +15,13 @@ module.exports = {
             require('autoprefixer'),
           ]
         }
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
       }
     ]
   }
