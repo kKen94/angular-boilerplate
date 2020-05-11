@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ce-auth',
+  selector: 'app-auth',
   templateUrl: 'auth.component.html',
 })
 export class AuthComponent {

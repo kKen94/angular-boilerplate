@@ -3,7 +3,7 @@ import { AuthFacade } from '../../auth.facade.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'ce-login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
