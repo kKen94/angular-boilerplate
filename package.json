@@ -1,15 +1,36 @@
 {
-  "name": "frontoffice",
+  "name": "frontend",
   "version": "1.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve --open --port 4300",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
   "private": true,
+  "scripts": {
+    "lint": "ng lint",
+    "test": "ng test",
+    "e2e": "ng e2e",
+    "build": "ng build",
+    "build:prod": "npm run build --prod",
+    "start": "ng serve --open --port 4300",
+    "analyze": "ng build --stats-json && yarn run webpack-bundle-analyzer dist/frontend/stats-es2015.json",
+    "format:check": "prettier --list-different \"src/**/*.{ts,tsx}\"",
+    "format:write": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "pretty-quick --staged --pattern \"src/**/*.{ts,tsx}\"",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@angular/animations": "~9.1.4",
     "@angular/common": "~9.1.4",
@@ -19,6 +40,9 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/prompt": "^8.3.5",
     "@ngxs/form-plugin": "^3.6.2",
     "@ngxs/logger-plugin": "^3.6.2",
     "@ngxs/router-plugin": "^3.6.2",
@@ -40,6 +64,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
@@ -47,15 +72,21 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "lint-staged": "^10.2.2",
     "postcss-custom-properties": "^9.1.1",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-nested": "^4.2.1",
     "postcss-scss": "^2.0.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "protractor": "~5.4.3",
+    "rxjs-tslint-rules": "^4.31.0",
     "tailwindcss": "^1.4.4",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "~3.8.3",
+    "webpack-bundle-analyzer": "^3.7.0"
   }
 }
