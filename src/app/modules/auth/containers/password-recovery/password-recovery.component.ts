@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthFacade } from '../../auth.facade.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthFacade } from '../../auth.facade.service';
 
 @Component({
   selector: 'app-password-recovery',

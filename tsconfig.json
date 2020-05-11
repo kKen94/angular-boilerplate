@@ -14,7 +14,12 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core": ["src/app/core/index.ts"],
+      "@model": ["src/app/shared/models/index.ts"],
+      "@validator": ["src/app/shared/directives/validators/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

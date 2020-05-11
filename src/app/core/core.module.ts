@@ -1,15 +1,15 @@
-import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { NgxsModule } from '@ngxs/store';
-import { environment } from '../../environments/environment';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import { AuthState } from '../modules/auth/state/auth/auth.state';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from '../../environments/environment';
+import { AppRoutingModule } from '../app-routing.module';
 import { AuthFacade } from '../modules/auth/auth.facade.service';
+import { AuthState } from '../modules/auth/state/auth/auth.state';
 
 // export const initializeConfigs = (
 //   appConfig: ConfigService,

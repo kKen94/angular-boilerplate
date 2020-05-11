@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { SetFormPristine, UpdateFormStatus, UpdateFormValue } from '@ngxs/form-plugin';
+import { Navigate } from '@ngxs/router-plugin';
+import { Actions, ofActionDispatched, ofActionSuccessful, Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { AuthApi } from './api';
 import {
   ChangePassword,
@@ -7,11 +11,7 @@ import {
   RecoverPassword,
   ResetPassword,
 } from './state/auth/auth.actions';
-import { Actions, ofActionDispatched, ofActionSuccessful, Select, Store } from '@ngxs/store';
-import { Navigate } from '@ngxs/router-plugin';
-import { AUTH_STATE_TOKEN, AuthState } from './state/auth/auth.state';
-import { SetFormPristine, UpdateFormStatus, UpdateFormValue } from '@ngxs/form-plugin';
-import { Observable } from 'rxjs';
+import { AuthState, AUTH_STATE_TOKEN } from './state/auth/auth.state';
 
 @Injectable()
 export class AuthFacade {

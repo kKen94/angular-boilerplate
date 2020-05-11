@@ -1,9 +1,7 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AuthComponent } from './modules/auth/auth.component';
-import { authRoutes } from './modules/auth/auth.routes';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './modules/auth/auth.module';
-// import { AuthResolver } from './modules/auth/auth-resolver.service';
+import { authRoutes } from './modules/auth/auth.routes';
 
 const routes: Routes = [
   {
@@ -18,13 +16,11 @@ const routes: Routes = [
 
 const config: ExtraOptions = {
   useHash: true,
-  // enableTracing: true,
   onSameUrlNavigation: 'reload',
 };
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, config), AuthModule],
   exports: [RouterModule],
-  // providers: [AuthResolver],
 })
 export class AppRoutingModule {}

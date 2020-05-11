@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ChangePasswordDto, LoginDto } from '../models';
 import { Observable } from 'rxjs';
+import { ChangePasswordDto, LoginDto } from '../models';
 
 @Injectable()
 export class AuthApi {

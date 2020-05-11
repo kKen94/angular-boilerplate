@@ -1,10 +1,9 @@
-import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { AuthApi } from '../../api';
-import { tap } from 'rxjs/operators';
+import { FormState } from '@model';
+import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ChangePassword, Login, Logout, RecoverPassword, ResetPassword } from './auth.actions';
-import { FormState } from '../../../../shared/models';
+import { tap } from 'rxjs/operators';
+import { AuthApi } from '../../api';
 import {
   ChangePasswordDto,
   ChangePasswordForm,
@@ -12,6 +11,7 @@ import {
   PasswordRecoveryForm,
   ResetPasswordForm,
 } from '../../models';
+import { ChangePassword, Login, Logout, RecoverPassword, ResetPassword } from './auth.actions';
 
 /******************************** STATE MODEL ********************************/
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { equalTo } from '@validator';
 import { AuthFacade } from '../../auth.facade.service';
-import { equalTo } from '../../../../shared/directives/validators';
 
 @Component({
   selector: 'app-change-password',
