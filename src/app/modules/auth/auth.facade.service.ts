@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
 import { AuthApi } from './api';
-import { Login, Logout, RecoverPassword } from './state/auth/auth.actions';
+import { ChangePassword, Login, Logout, RecoverPassword, ResetPassword } from './state/auth/auth.actions';
 import { Actions, ofActionDispatched, ofActionSuccessful, Select, Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
 import { AUTH_STATE_TOKEN, AuthState } from './state/auth/auth.state';
-import {
-  SetFormPristine,
-  UpdateFormStatus,
-  UpdateFormValue
-} from '@ngxs/form-plugin';
+import { SetFormPristine, UpdateFormStatus, UpdateFormValue } from '@ngxs/form-plugin';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthFacade {
-
   @Select(AuthState.loginFormValidation) isLoginValid$: Observable<boolean>;
   @Select(AuthState.passwordRecoveryFormValidation) isPasswordRecoveryValid$: Observable<boolean>;
+  @Select(AuthState.changePasswordFormValidation) isChangePasswordValid$: Observable<boolean>;
+  @Select(AuthState.resetPasswordFormValidation) isResetPasswordValid$: Observable<boolean>;
 
-  constructor(
-    private authApi: AuthApi,
-    private store: Store,
-    private actions: Actions,
-  ) {
+  constructor(private authApi: AuthApi, private store: Store, private actions: Actions) {
     this.actions.pipe(ofActionSuccessful(Login)).subscribe(() => {
       this.resetForm('auth.loginForm');
       this.goToCallbackUrl();
     });
     this.actions.pipe(ofActionSuccessful(RecoverPassword)).subscribe(() => {
       this.resetForm('auth.recoveryForm');
+      this.goToLogin();
+    });
+    this.actions.pipe(ofActionSuccessful(ChangePassword)).subscribe(() => {
+      this.resetForm('auth.changePasswordForm');
+      this.goToLogin();
+    });
+    this.actions.pipe(ofActionSuccessful(ResetPassword)).subscribe(() => {
+      this.resetForm('auth.resetPasswordForm');
       this.goToLogin();
     });
     this.actions.pipe(ofActionDispatched(Logout)).subscribe(() => this.goToLogin());
@@ -39,6 +40,14 @@ export class AuthFacade {
 
   recoverPassword(): void {
     this.store.dispatch(new RecoverPassword());
+  }
+
+  changePassword(): void {
+    this.store.dispatch(new ChangePassword());
+  }
+
+  resetPassword(): void {
+    this.store.dispatch(new ResetPassword());
   }
 
   logout(): void {
@@ -71,5 +80,4 @@ export class AuthFacade {
     this.store.dispatch(new UpdateFormStatus({ status: '', path }));
     this.store.dispatch(new UpdateFormValue({ value: undefined, path }));
   }
-
 }

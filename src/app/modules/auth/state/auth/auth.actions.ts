@@ -9,3 +9,11 @@ export class Logout {
 export class RecoverPassword {
   static readonly type = '[Auth] Recover Password';
 }
+
+export class ChangePassword {
+  static readonly type = '[Auth] Change Password';
+}
+
+export class ResetPassword {
+  static readonly type = '[Auth] Reset Password';
+}

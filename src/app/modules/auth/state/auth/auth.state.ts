@@ -3,17 +3,25 @@ import { Injectable } from '@angular/core';
 import { AuthApi } from '../../api';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Login, Logout, RecoverPassword } from './auth.actions';
+import { ChangePassword, Login, Logout, RecoverPassword, ResetPassword } from './auth.actions';
 import { FormState } from '../../../../shared/models';
-import { LoginDto } from '../../models';
+import {
+  ChangePasswordDto,
+  ChangePasswordForm,
+  LoginDto,
+  PasswordRecoveryForm,
+  ResetPasswordForm,
+} from '../../models';
 
 /******************************** STATE MODEL ********************************/
 
 interface AuthStateModel {
   token: string | null;
   callbackUrl: string;
-  recoveryForm: FormState<{username: string}>;
+  recoveryForm: FormState<PasswordRecoveryForm>;
   loginForm: FormState<LoginDto>;
+  changePasswordForm: FormState<ChangePasswordForm>;
+  resetPasswordForm: FormState<ResetPasswordForm>;
 }
 
 class AuthStateModel {
@@ -22,6 +30,8 @@ class AuthStateModel {
     this.callbackUrl = '/';
     this.recoveryForm = new FormState();
     this.loginForm = new FormState();
+    this.changePasswordForm = new FormState();
+    this.resetPasswordForm = new FormState();
   }
 }
 
@@ -33,12 +43,10 @@ export const AUTH_STATE_TOKEN = new StateToken<AuthStateModel>('auth');
   name: AUTH_STATE_TOKEN,
   defaults: new AuthStateModel(),
 })
-
 /****************************** COMPONENT ***********************************/
 
 @Injectable()
 export class AuthState {
-
   @Selector([AUTH_STATE_TOKEN])
   static token(state: AuthStateModel): string | null {
     return state.token;
@@ -64,9 +72,17 @@ export class AuthState {
     return state.recoveryForm.status === 'VALID';
   }
 
-  constructor(
-    private authApi: AuthApi,
-  ) { }
+  @Selector([AUTH_STATE_TOKEN])
+  static changePasswordFormValidation(state: AuthStateModel) {
+    return state.changePasswordForm.status === 'VALID';
+  }
+
+  @Selector([AUTH_STATE_TOKEN])
+  static resetPasswordFormValidation(state: AuthStateModel) {
+    return state.resetPasswordForm.status === 'VALID';
+  }
+
+  constructor(private authApi: AuthApi) {}
 
   @Action(Login)
   login(ctx: StateContext<AuthStateModel>): Observable<{ token: string }> {
@@ -76,7 +92,7 @@ export class AuthState {
         ctx.patchState({
           token: result.token,
         });
-      })
+      }),
     );
   }
 
@@ -89,5 +105,17 @@ export class AuthState {
   recoverPassword(ctx: StateContext<AuthStateModel>): Observable<any> {
     const username = ctx.getState().recoveryForm.model.username;
     return this.authApi.recoverPassword(username);
+  }
+
+  @Action(ChangePassword)
+  changePassword(ctx: StateContext<AuthStateModel>): Observable<any> {
+    const model: ChangePasswordDto = ctx.getState().changePasswordForm.model;
+    return this.authApi.changePassword(model);
+  }
+
+  @Action(ResetPassword)
+  resetPassword(ctx: StateContext<AuthStateModel>): Observable<any> {
+    const newPassword = ctx.getState().resetPasswordForm.model.newPassword;
+    return this.authApi.resetPassword(newPassword);
   }
 }

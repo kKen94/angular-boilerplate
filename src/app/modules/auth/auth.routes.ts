@@ -1,6 +1,8 @@
 import { LoginComponent } from './containers/login/login.component';
 import { AuthComponent } from './auth.component';
 import { PasswordRecoveryComponent } from './containers/password-recovery/password-recovery.component';
+import { ChangePasswordComponent } from './containers/change-password/change-password.component';
+import { ResetPasswordComponent } from './containers/reset-password/reset-password.component';
 
 export const authRoutes = {
   path: 'auth',
@@ -18,6 +20,14 @@ export const authRoutes = {
     {
       path: 'password-recovery',
       component: PasswordRecoveryComponent,
-    }
+    },
+    {
+      path: 'change-password',
+      component: ChangePasswordComponent,
+    },
+    {
+      path: 'reset-password',
+      component: ResetPasswordComponent,
+    },
   ],
 };
