@@ -7,18 +7,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './password-recovery.component.html',
 })
 export class PasswordRecoveryComponent {
-
   recoveryForm: FormGroup;
   isRecoveryValid: boolean;
 
-  constructor(
-    private authFacade: AuthFacade,
-    private fb: FormBuilder,
-  ) {
+  constructor(private authFacade: AuthFacade, private fb: FormBuilder) {
     this.recoveryForm = fb.group({
       username: ['', Validators.required],
     });
-    this.authFacade.isPasswordRecoveryValid$.subscribe(isValid => this.isRecoveryValid = isValid);
+    this.authFacade.isPasswordRecoveryValid$.subscribe(isValid => (this.isRecoveryValid = isValid));
   }
 
   goToLogin(): void {
@@ -28,5 +24,4 @@ export class PasswordRecoveryComponent {
   recoverPassword(): void {
     this.authFacade.recoverPassword();
   }
-
 }

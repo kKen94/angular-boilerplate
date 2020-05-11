@@ -18,7 +18,10 @@ export class ChangePasswordComponent {
     });
     this.changePasswordForm.addControl(
       'confirmPassword',
-      this.fb.control('', [Validators.required, equalTo(this.changePasswordForm.controls['newPassword'])]),
+      this.fb.control('', [
+        Validators.required,
+        equalTo(this.changePasswordForm.controls['newPassword']),
+      ]),
     );
     this.authFacade.isChangePasswordValid$.subscribe(isValid => (this.isFormValid = isValid));
   }

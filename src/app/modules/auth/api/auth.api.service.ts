@@ -12,7 +12,9 @@ export class AuthApi {
   }
 
   recoverPassword(username: string): Observable<any> {
-    return this.http.get<any>(`https://localhost:5001/api/v1/users/auth/recover-password/${username}`);
+    return this.http.get<any>(
+      `https://localhost:5001/api/v1/users/auth/recover-password/${username}`,
+    );
   }
 
   changePassword(dto: ChangePasswordDto): Observable<any> {
@@ -20,6 +22,9 @@ export class AuthApi {
   }
 
   resetPassword(newPassword: string): Observable<any> {
-    return this.http.post<any>(`https://localhost:5001/api/v1/users/auth/reset-password`, newPassword);
+    return this.http.post<any>(
+      `https://localhost:5001/api/v1/users/auth/reset-password`,
+      newPassword,
+    );
   }
 }

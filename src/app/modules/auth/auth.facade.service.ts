@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AuthApi } from './api';
-import { ChangePassword, Login, Logout, RecoverPassword, ResetPassword } from './state/auth/auth.actions';
+import {
+  ChangePassword,
+  Login,
+  Logout,
+  RecoverPassword,
+  ResetPassword,
+} from './state/auth/auth.actions';
 import { Actions, ofActionDispatched, ofActionSuccessful, Select, Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
 import { AUTH_STATE_TOKEN, AuthState } from './state/auth/auth.state';

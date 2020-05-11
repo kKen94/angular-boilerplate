@@ -1,6 +1,6 @@
-import { AppRoutingModule } from "../app-routing.module";
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule, Optional, SkipSelf } from "@angular/core";
+import { AppRoutingModule } from '../app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from '../../environments/environment';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
@@ -21,15 +21,13 @@ import { AuthFacade } from '../modules/auth/auth.facade.service';
 //   appLanguage: LanguageService,
 // ): (() => Promise<void>) => () => appLanguage.load();
 
-const STATES = [
-  AuthState,
-];
+const STATES = [AuthState];
 
 @NgModule({
   imports: [
     HttpClientModule,
     AppRoutingModule,
-    NgxsModule.forRoot(STATES, {developmentMode: !environment.production}),
+    NgxsModule.forRoot(STATES, { developmentMode: !environment.production }),
     NgxsStoragePluginModule.forRoot({
       key: 'auth.token',
       // storage: per scegliere tra session e local potrei implementare un'interfaccia custom come suggerito dalla documentazione del plugin
@@ -37,7 +35,11 @@ const STATES = [
     NgxsFormPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
-    NgxsLoggerPluginModule.forRoot({collapsed: false, disabled: environment.production, logger: console}),
+    NgxsLoggerPluginModule.forRoot({
+      collapsed: false,
+      disabled: environment.production,
+      logger: console,
+    }),
   ],
   exports: [
     HttpClientModule,

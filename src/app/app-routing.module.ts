@@ -8,8 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 const routes: Routes = [
   {
     path: 'pages',
-    loadChildren: () =>
-      import('src/app/modules/pages/pages.module').then((m) => m.PagesModule),
+    loadChildren: () => import('src/app/modules/pages/pages.module').then(m => m.PagesModule),
   },
   authRoutes,
 
@@ -24,10 +23,7 @@ const config: ExtraOptions = {
 };
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, config),
-    AuthModule,
-  ],
+  imports: [RouterModule.forRoot(routes, config), AuthModule],
   exports: [RouterModule],
   // providers: [AuthResolver],
 })

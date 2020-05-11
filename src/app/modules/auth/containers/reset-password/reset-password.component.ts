@@ -17,7 +17,10 @@ export class ResetPasswordComponent {
     });
     this.resetPasswordForm.addControl(
       'confirmPassword',
-      this.fb.control('', [Validators.required, equalTo(this.resetPasswordForm.controls['newPassword'])]),
+      this.fb.control('', [
+        Validators.required,
+        equalTo(this.resetPasswordForm.controls['newPassword']),
+      ]),
     );
     this.authFacade.isResetPasswordValid$.subscribe(isValid => (this.isFormValid = isValid));
   }
