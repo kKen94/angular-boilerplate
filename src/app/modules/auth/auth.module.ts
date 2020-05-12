@@ -20,7 +20,12 @@ const AUTH_COMPONENTS = [
 
 @NgModule({
   declarations: [...AUTH_COMPONENTS],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, NgxsFormPluginModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    NgxsFormPluginModule,
+  ],
   providers: [AuthApi],
 })
 export class AuthModule {}

@@ -1,4 +1,4 @@
-@import "../_variables.scss";
+@import "variables";
 
 * {
   &:focus {
@@ -10,9 +10,54 @@
   }
 }
 
+.aside-vertical {
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.35);
+  @apply w-1/6;
+  @apply h-full;
+  @apply bg-red-500;
+  z-index: 1;
+}
+
+.header {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  @apply w-full h-16 flex flex-row-reverse bg-gray-100;
+  @apply h-16;
+  @apply flex;
+  @apply flex-row-reverse;
+  @apply bg-gray-100;
+  @apply sticky;
+  @apply top-0;
+}
+
 .full {
   @apply w-full;
   @apply h-full;
+}
+
+.disabled {
+  @apply opacity-50;
+  @apply cursor-not-allowed;
+}
+
+.quick-panel {
+  @apply h-full;
+  @apply absolute;
+  @apply top-0;
+  @apply right-0;
+  @apply w-1/6;
+  @apply bg-gray-100;
+  @apply overflow-x-hidden;
+  @apply overflow-y-hidden;
+  z-index: 1000;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+}
+
+.overlay {
+  @apply fixed;
+  @apply top-0;
+  @apply right-0;
+  z-index: 999;
+  opacity: 0.35;
 }
 
 /**********************************************************************************************************************************************************/

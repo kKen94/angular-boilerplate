@@ -23,7 +23,9 @@ export class ChangePasswordComponent {
         equalTo(this.changePasswordForm.controls['newPassword']),
       ]),
     );
-    this.authFacade.isChangePasswordValid$.subscribe(isValid => (this.isFormValid = isValid));
+    this.authFacade.isChangePasswordValid$.subscribe(
+      isValid => (this.isFormValid = isValid),
+    );
   }
 
   goToLogin(): void {

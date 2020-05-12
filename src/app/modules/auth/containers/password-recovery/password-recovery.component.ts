@@ -14,7 +14,9 @@ export class PasswordRecoveryComponent {
     this.recoveryForm = fb.group({
       username: ['', Validators.required],
     });
-    this.authFacade.isPasswordRecoveryValid$.subscribe(isValid => (this.isRecoveryValid = isValid));
+    this.authFacade.isPasswordRecoveryValid$.subscribe(
+      isValid => (this.isRecoveryValid = isValid),
+    );
   }
 
   goToLogin(): void {

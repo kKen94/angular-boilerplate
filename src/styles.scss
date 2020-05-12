@@ -1,13 +1,7 @@
 @import "tailwindcss/base";
-//@import "app/theme/style/custom-tailwind/base.scss";
-
 @import "tailwindcss/components";
-//@import "app/theme/style/custom-tailwind/components.scss";
-
 @import "tailwindcss/utilities";
-@import "app/theme/style/custom-tailwind/utilities.scss";
-//@import "app/theme/style/_override.scss";
-
+@import "app/theme/style/custom";
 
 :root {
   --color-primary: #cc0000;

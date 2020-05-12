@@ -18,7 +18,8 @@
     "paths": {
       "@core": ["src/app/core/index.ts"],
       "@model": ["src/app/shared/models/index.ts"],
-      "@validator": ["src/app/shared/directives/validators/index.ts"]
+      "@validator": ["src/app/shared/directives/validators/index.ts"],
+      "@layout": ["src/app/theme/layout/index.ts"]
     }
   },
   "angularCompilerOptions": {

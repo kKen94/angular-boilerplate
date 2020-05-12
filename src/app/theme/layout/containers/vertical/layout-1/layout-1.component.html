@@ -1,0 +1,12 @@
+<div class="full flex">
+  <div class="full flex" [ngClass]="{'overlay': isPanelOpen}">
+    <app-navbar-vertical class="aside-vertical"></app-navbar-vertical>
+    <div class="flex-auto flex flex-col">
+      <app-header class="header"></app-header>
+      <main class="flex-auto">
+        <app-content></app-content>
+      </main>
+    </div>
+  </div>
+  <app-quick-panel *ngIf="isPanelOpen" class="quick-panel"></app-quick-panel>
+</div>

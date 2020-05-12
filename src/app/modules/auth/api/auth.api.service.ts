@@ -8,7 +8,10 @@ export class AuthApi {
   constructor(private http: HttpClient) {}
 
   login(loginValue: LoginDto): Observable<any> {
-    return this.http.post<any>('https://localhost:5001/api/v1/users/auth/sign-in', loginValue);
+    return this.http.post<any>(
+      'https://localhost:5001/api/v1/users/auth/sign-in',
+      loginValue,
+    );
   }
 
   recoverPassword(username: string): Observable<any> {
@@ -18,7 +21,10 @@ export class AuthApi {
   }
 
   changePassword(dto: ChangePasswordDto): Observable<any> {
-    return this.http.post<any>(`https://localhost:5001/api/v1/users/auth/change-password`, dto);
+    return this.http.post<any>(
+      `https://localhost:5001/api/v1/users/auth/change-password`,
+      dto,
+    );
   }
 
   resetPassword(newPassword: string): Observable<any> {

@@ -22,7 +22,9 @@ export class ResetPasswordComponent {
         equalTo(this.resetPasswordForm.controls['newPassword']),
       ]),
     );
-    this.authFacade.isResetPasswordValid$.subscribe(isValid => (this.isFormValid = isValid));
+    this.authFacade.isResetPasswordValid$.subscribe(
+      isValid => (this.isFormValid = isValid),
+    );
   }
 
   goToLogin(): void {

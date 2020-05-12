@@ -6,7 +6,8 @@ import { authRoutes } from './modules/auth/auth.routes';
 const routes: Routes = [
   {
     path: 'pages',
-    loadChildren: () => import('src/app/modules/pages/pages.module').then(m => m.PagesModule),
+    loadChildren: () =>
+      import('src/app/modules/pages/pages.module').then(m => m.PagesModule),
   },
   authRoutes,
 

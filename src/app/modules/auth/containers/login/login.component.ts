@@ -15,7 +15,9 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-    this.authFacade.isLoginValid$.subscribe(isValid => (this.isFormValid = isValid));
+    this.authFacade.isLoginValid$.subscribe(
+      isValid => (this.isFormValid = isValid),
+    );
   }
 
   login(): void {

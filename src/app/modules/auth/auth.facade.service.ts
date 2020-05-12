@@ -1,7 +1,17 @@
 import { Injectable } from '@angular/core';
-import { SetFormPristine, UpdateFormStatus, UpdateFormValue } from '@ngxs/form-plugin';
+import {
+  SetFormPristine,
+  UpdateFormStatus,
+  UpdateFormValue,
+} from '@ngxs/form-plugin';
 import { Navigate } from '@ngxs/router-plugin';
-import { Actions, ofActionDispatched, ofActionSuccessful, Select, Store } from '@ngxs/store';
+import {
+  Actions,
+  ofActionDispatched,
+  ofActionSuccessful,
+  Select,
+  Store,
+} from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AuthApi } from './api';
 import {
@@ -10,17 +20,24 @@ import {
   Logout,
   RecoverPassword,
   ResetPassword,
-} from './state/auth/auth.actions';
+} from './state/auth/auth.action';
 import { AuthState, AUTH_STATE_TOKEN } from './state/auth/auth.state';
 
 @Injectable()
 export class AuthFacade {
   @Select(AuthState.loginFormValidation) isLoginValid$: Observable<boolean>;
-  @Select(AuthState.passwordRecoveryFormValidation) isPasswordRecoveryValid$: Observable<boolean>;
-  @Select(AuthState.changePasswordFormValidation) isChangePasswordValid$: Observable<boolean>;
-  @Select(AuthState.resetPasswordFormValidation) isResetPasswordValid$: Observable<boolean>;
+  @Select(AuthState.passwordRecoveryFormValidation)
+  isPasswordRecoveryValid$: Observable<boolean>;
+  @Select(AuthState.changePasswordFormValidation)
+  isChangePasswordValid$: Observable<boolean>;
+  @Select(AuthState.resetPasswordFormValidation)
+  isResetPasswordValid$: Observable<boolean>;
 
-  constructor(private authApi: AuthApi, private store: Store, private actions: Actions) {
+  constructor(
+    private authApi: AuthApi,
+    private store: Store,
+    private actions: Actions,
+  ) {
     this.actions.pipe(ofActionSuccessful(Login)).subscribe(() => {
       this.resetForm('auth.loginForm');
       this.goToCallbackUrl();
@@ -37,7 +54,9 @@ export class AuthFacade {
       this.resetForm('auth.resetPasswordForm');
       this.goToLogin();
     });
-    this.actions.pipe(ofActionDispatched(Logout)).subscribe(() => this.goToLogin());
+    this.actions
+      .pipe(ofActionDispatched(Logout))
+      .subscribe(() => this.goToLogin());
   }
 
   login(): void {

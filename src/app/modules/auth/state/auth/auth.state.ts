@@ -11,7 +11,13 @@ import {
   PasswordRecoveryForm,
   ResetPasswordForm,
 } from '../../models';
-import { ChangePassword, Login, Logout, RecoverPassword, ResetPassword } from './auth.actions';
+import {
+  ChangePassword,
+  Login,
+  Logout,
+  RecoverPassword,
+  ResetPassword,
+} from './auth.action';
 
 /******************************** STATE MODEL ********************************/
 
