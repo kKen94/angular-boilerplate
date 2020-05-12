@@ -32,10 +32,10 @@ export class LayoutState {
   }
 
   @Action(TogglePanel)
-  togglePanel(ctx: StateContext<LayoutStateModel>): void {
+  togglePanel(ctx: StateContext<LayoutStateModel>, action: TogglePanel): void {
     const isPanelOpen = ctx.getState().openPanel;
     ctx.patchState({
-      openPanel: !isPanelOpen,
+      openPanel: action.openPanel ?? !isPanelOpen,
     });
   }
 }

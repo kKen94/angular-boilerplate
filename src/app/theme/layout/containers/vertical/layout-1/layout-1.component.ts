@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, ViewEncapsulation } from '@angular/core';
 import { LayoutFacade } from '../../../layout.facade.service';
 
 @Component({
@@ -7,11 +7,24 @@ import { LayoutFacade } from '../../../layout.facade.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class VerticalLayout1Component {
-  isPanelOpen: boolean;
+  isPanelOpened: boolean;
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.code === 'Escape') {
+      this.closePanel();
+    }
+  }
 
   constructor(private layoutFacade: LayoutFacade) {
-    this.layoutFacade.isPanelOpen$.subscribe(
-      result => (this.isPanelOpen = result),
+    this.layoutFacade.isPanelOpened$.subscribe(
+      result => (this.isPanelOpened = result),
     );
+  }
+
+  closePanel(): void {
+    if (this.isPanelOpened) {
+      this.layoutFacade.closePanel();
+    }
   }
 }
