@@ -1,4 +1,5 @@
 @import "variables";
+@import "animations";
 
 * {
   &:focus {
@@ -10,20 +11,53 @@
   }
 }
 
+#toggle-menu {
+  @apply hidden;
+}
+
 .aside-vertical {
   box-shadow: 0 2px 8px 0 rgba(0,0,0,.35);
-  @apply w-1/6;
   @apply h-full;
-  @apply bg-red-500;
+  @apply bg-bluegray-800;
   z-index: 1;
+  @apply w-1/7;
+
+  &.folded {
+    @apply w-16;
+  }
+}
+
+.menu {
+  @apply flex;
+  @apply items-center;
+  @apply cursor-pointer;
+  @apply text-white;
+  @apply h-10;
+  @apply rounded-r-full;
+  @apply pr-3;
+  @apply pl-6;
+  @apply mr-4;
+
+  &:hover {
+    @apply bg-bluegray-900;
+  }
+
+  &.unpinned {
+    @apply rounded-full;
+    @apply pr-0;
+    @apply ml-3;
+    @apply mr-3;
+    @apply pl-3;
+  }
+
+  &.active {
+    @apply bg-blue-400;
+  }
 }
 
 .header {
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-  @apply w-full h-16 flex flex-row-reverse bg-gray-100;
   @apply h-16;
-  @apply flex;
-  @apply flex-row-reverse;
   @apply bg-gray-100;
   @apply sticky;
   @apply top-0;
@@ -159,19 +193,4 @@
   @apply font-light;
   @apply text-2xl;
   @apply text-gray-700;
-}
-
-/*************************************************************************************************************************************************************/
-
-/*********************************************************************** MEDIA QUERY *************************************************************************/
-
-/*************************************************************************************************************************************************************/
-
-
-/***************************************                    md                        *********************************************/
-@screen md {
-  .input-label {
-    @apply text-right;
-    @apply mb-0;
-  }
 }

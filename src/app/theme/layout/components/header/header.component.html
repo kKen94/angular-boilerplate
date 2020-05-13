@@ -1,5 +1,12 @@
-<header>
-  <button class="w-16 h-full flex flex-col items-center justify-center border-l border-gray-300" (click)="togglePanel()">
-    <fa-icon [icon]="faList" class="text-xl text-gray-600"></fa-icon>
-  </button>
+<header class="h-full flex justify-between">
+  <div>
+    <button class="h-full w-16 flex flex-col items-center justify-center border-r border-gray-300" id="toggle-menu" (click)="openMenu($event)">
+      <fa-icon [icon]="faBars" class="text-xl text-gray-600"></fa-icon>
+    </button>
+  </div>
+  <div>
+    <button class="h-full w-16 flex flex-col items-center justify-center border-l border-gray-300" (click)="openPanel($event)">
+      <fa-icon [icon]="faList" class="text-xl text-gray-600"></fa-icon>
+    </button>
+  </div>
 </header>

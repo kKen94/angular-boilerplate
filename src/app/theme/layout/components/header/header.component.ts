@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { faList } from '@fortawesome/free-solid-svg-icons/faList';
 import { LayoutFacade } from '../../layout.facade.service';
 
@@ -8,10 +9,17 @@ import { LayoutFacade } from '../../layout.facade.service';
 })
 export class HeaderComponent {
   faList = faList;
+  faBars = faBars;
 
   constructor(private layoutFacade: LayoutFacade) {}
 
-  togglePanel(): void {
-    this.layoutFacade.togglePanel();
+  openPanel(e): void {
+    e.stopPropagation();
+    this.layoutFacade.openPanel();
+  }
+
+  openMenu(e): void {
+    e.stopPropagation();
+    this.layoutFacade.openMenu();
   }
 }

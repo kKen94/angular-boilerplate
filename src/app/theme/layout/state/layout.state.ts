@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
-import { TogglePanel } from './layout.action';
+import { Menu, QuickPanel, TogglePinMenu } from './layout.action';
+import OpenPanel = QuickPanel.Open;
+import ClosePanel = QuickPanel.Close;
+import OpenMenu = Menu.Open;
+import CloseMenu = Menu.Close;
 
 /******************************** STATE MODEL ********************************/
 
 interface LayoutStateModel {
   openPanel: boolean;
+  openMenu: boolean;
+  pinMenu: boolean;
 }
 
 class LayoutStateModel {
   constructor() {
     this.openPanel = false;
+    this.openMenu = true;
+    this.pinMenu = true;
   }
 }
 
@@ -31,11 +39,52 @@ export class LayoutState {
     return state.openPanel;
   }
 
-  @Action(TogglePanel)
-  togglePanel(ctx: StateContext<LayoutStateModel>, action: TogglePanel): void {
-    const isPanelOpen = ctx.getState().openPanel;
+  @Selector([LAYOUT_STATE_TOKEN])
+  static openMenu(state: LayoutStateModel): boolean {
+    return state.openMenu;
+  }
+
+  @Selector([LAYOUT_STATE_TOKEN])
+  static pinMenu(state: LayoutStateModel): boolean {
+    return state.pinMenu;
+  }
+
+  @Action(OpenPanel)
+  openQuickPanel(ctx: StateContext<LayoutStateModel>): void {
     ctx.patchState({
-      openPanel: action.openPanel ?? !isPanelOpen,
+      openPanel: true,
+    });
+  }
+
+  @Action(ClosePanel)
+  closeQuickPanel(ctx: StateContext<LayoutStateModel>): void {
+    ctx.patchState({
+      openPanel: false,
+    });
+  }
+
+  @Action(OpenMenu)
+  openMenu(ctx: StateContext<LayoutStateModel>): void {
+    ctx.patchState({
+      openMenu: true,
+    });
+  }
+
+  @Action(CloseMenu)
+  closeMenu(ctx: StateContext<LayoutStateModel>): void {
+    ctx.patchState({
+      openMenu: false,
+    });
+  }
+
+  @Action(TogglePinMenu)
+  togglePinMenu(
+    ctx: StateContext<LayoutStateModel>,
+    action: TogglePinMenu,
+  ): void {
+    const pinMenu = ctx.getState().pinMenu;
+    ctx.patchState({
+      pinMenu: action.open ?? !pinMenu,
     });
   }
 }
