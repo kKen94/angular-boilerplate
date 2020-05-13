@@ -2,6 +2,8 @@
 @import "animations";
 
 * {
+  @apply font-custom;
+
   &:focus {
     @apply outline-none #{!important};
   }

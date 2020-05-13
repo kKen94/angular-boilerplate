@@ -13,6 +13,9 @@ module.exports = {
       padding: '2rem'
     },
     extend: {
+      fontFamily: {
+        'custom': ['Muli', 'Helvetica Neue', 'Arial', 'sans-serif'],
+      },
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',

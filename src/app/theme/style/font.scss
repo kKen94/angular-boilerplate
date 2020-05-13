@@ -1,0 +1,18 @@
+/*************************************************** VARIABLE FONTS *************************************************/
+/***************************************** deactivate this on older browser *****************************************/
+
+@font-face {
+  font-family: Muli;
+  src: url('src/assets/font/Muli-VariableFont_wght.ttf') format("truetype-variations");
+  font-weight: 1 999;
+}
+
+@font-face {
+  font-family: Muli;
+  src: url('src/assets/font/Muli-Italic-VariableFont_wght.ttf') format("truetype-variations");
+  font-weight: 1 999;
+  font-style: italic;
+}
+
+/****************************************************** NORMALE FONTS *******************************************************/
+/***************************************** write every single weight and style font *****************************************/
