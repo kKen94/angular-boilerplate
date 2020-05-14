@@ -13,17 +13,19 @@ import { LayoutFacade } from '../../../layout.facade.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class VerticalLayout1Component implements OnInit {
+  mdWidth = parseInt(tailwind.theme.screens.md.max);
+  previousWidth: number;
+  isNavbarHover: boolean;
   isPanelOpen: boolean;
   isMenuOpen: boolean;
   isMenuPin: boolean;
-  mdWidth = parseInt(tailwind.theme.screens.md.max);
-  previousWidth: number;
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     if (event.code === 'Escape') {
       this.closePanel();
       this.closeMenu();
+      this.hoverOutNavbar();
     }
   }
 
@@ -46,6 +48,9 @@ export class VerticalLayout1Component implements OnInit {
   }
 
   constructor(private facade: LayoutFacade) {
+    this.facade.isNavbarHover$.subscribe(
+      result => (this.isNavbarHover = result),
+    );
     this.facade.isPanelOpen$.subscribe(result => (this.isPanelOpen = result));
     this.facade.isMenuOpen$.subscribe(result => (this.isMenuOpen = result));
     this.facade.isMenuPin$.subscribe(result => (this.isMenuPin = result));
@@ -73,6 +78,16 @@ export class VerticalLayout1Component implements OnInit {
   openMenu(): void {
     if (!this.isMenuOpen) {
       this.facade.openMenu();
+    }
+  }
+
+  hoverInNavbar(): void {
+    this.facade.hoverInNavbar();
+  }
+
+  hoverOutNavbar(): void {
+    if (this.isNavbarHover) {
+      this.facade.hoverOutNavbar();
     }
   }
 }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MenuModule } from '../../menu/menu.module';
+import { MenuModule } from '../menu/menu.module';
 import { NavbarVerticalComponent } from './navbar-vertical.component';
 
 @NgModule({

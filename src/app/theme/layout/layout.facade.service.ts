@@ -11,6 +11,7 @@ import CloseMenu = Menu.Close;
 
 @Injectable()
 export class LayoutFacade {
+  @Select(LayoutState.hoverNavbar) isNavbarHover$: Observable<boolean>;
   @Select(LayoutState.openPanel) isPanelOpen$: Observable<boolean>;
   @Select(LayoutState.openMenu) isMenuOpen$: Observable<boolean>;
   @Select(LayoutState.pinMenu) isMenuPin$: Observable<boolean>;
@@ -34,8 +35,16 @@ export class LayoutFacade {
     this.store.dispatch(new CloseMenu());
   }
 
+  hoverInNavbar(): void {
+    this.store.dispatch(new HoverIn());
+  }
+
+  hoverOutNavbar(): void {
+    this.store.dispatch(new HoverOut());
+  }
+
   togglePinMenu(open?: boolean): void {
-    this.store.dispatch(new TogglePinMenu(open));
+    this.store.dispatch(new TogglePin(open));
   }
 
   goToLink(routerLink: string): void {

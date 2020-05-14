@@ -18,9 +18,20 @@ export namespace Menu {
   export class Close {
     static readonly type = '[Layout] ClosePanel menu';
   }
+
+  export class TogglePin {
+    static readonly type = '[Layout] Toggle pin menu';
+    constructor(public open?: boolean) {}
+  }
 }
 
-export class TogglePinMenu {
-  static readonly type = '[Layout] Toggle pin menu';
-  constructor(public open?: boolean) {}
+// tslint:disable-next-line:no-namespace
+export namespace Navbar {
+  export class HoverIn {
+    static readonly type = '[Layout] Hover navbar in';
+  }
+
+  export class HoverOut {
+    static readonly type = '[Layout] Hover navbar out';
+  }
 }

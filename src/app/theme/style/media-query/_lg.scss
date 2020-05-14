@@ -1,5 +1,11 @@
 @screen lg {
   .aside-vertical {
     @apply w-1/5;
+
+    &.folded {
+      &.hovered {
+        @apply w-1/5;
+      }
+    }
   }
 }

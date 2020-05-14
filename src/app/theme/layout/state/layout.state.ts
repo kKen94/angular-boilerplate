@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
-import { Menu, QuickPanel, TogglePinMenu } from './layout.action';
+import { Menu, Navbar, QuickPanel } from './layout.action';
+import HoverInNavbar = Navbar.HoverIn;
+import HoverOutNavbar = Navbar.HoverOut;
 import OpenPanel = QuickPanel.Open;
 import ClosePanel = QuickPanel.Close;
 import OpenMenu = Menu.Open;
 import CloseMenu = Menu.Close;
+import TogglePin = Menu.TogglePin;
 
 /******************************** STATE MODEL ********************************/
 
 interface LayoutStateModel {
+  hoverNavbar: boolean;
   openPanel: boolean;
   openMenu: boolean;
   pinMenu: boolean;
@@ -16,6 +20,7 @@ interface LayoutStateModel {
 
 class LayoutStateModel {
   constructor() {
+    this.hoverNavbar = false;
     this.openPanel = false;
     this.openMenu = true;
     this.pinMenu = true;
@@ -49,6 +54,27 @@ export class LayoutState {
     return state.pinMenu;
   }
 
+  @Selector([LAYOUT_STATE_TOKEN])
+  static hoverNavbar(state: LayoutStateModel): boolean {
+    return state.hoverNavbar;
+  }
+
+  @Action(HoverInNavbar)
+  hoverInNavbar(ctx: StateContext<LayoutStateModel>): void {
+    console.log(ctx.getState());
+    ctx.patchState({
+      hoverNavbar: true,
+    });
+    console.log(ctx.getState());
+  }
+
+  @Action(HoverOutNavbar)
+  hoverOutNavbar(ctx: StateContext<LayoutStateModel>): void {
+    ctx.patchState({
+      hoverNavbar: false,
+    });
+  }
+
   @Action(OpenPanel)
   openQuickPanel(ctx: StateContext<LayoutStateModel>): void {
     ctx.patchState({
@@ -77,11 +103,8 @@ export class LayoutState {
     });
   }
 
-  @Action(TogglePinMenu)
-  togglePinMenu(
-    ctx: StateContext<LayoutStateModel>,
-    action: TogglePinMenu,
-  ): void {
+  @Action(TogglePin)
+  togglePinMenu(ctx: StateContext<LayoutStateModel>, action: TogglePin): void {
     const pinMenu = ctx.getState().pinMenu;
     ctx.patchState({
       pinMenu: action.open ?? !pinMenu,

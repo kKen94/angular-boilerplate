@@ -26,6 +26,16 @@
 
   &.folded {
     @apply w-16;
+
+    &.hovered {
+      @apply absolute;
+      @apply top-0;
+      @apply left-0;
+      @apply overflow-x-hidden;
+      @apply overflow-y-hidden;
+      z-index: 1000;
+      @apply w-1/7;
+    }
   }
 }
 

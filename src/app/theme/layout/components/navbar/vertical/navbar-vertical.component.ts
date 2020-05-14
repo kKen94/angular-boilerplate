@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { faThumbtack } from '@fortawesome/free-solid-svg-icons/faThumbtack';
-import { LayoutFacade } from '../../../../layout.facade.service';
+import { LayoutFacade } from '../../../layout.facade.service';
 
 @Component({
   selector: 'app-navbar-vertical',

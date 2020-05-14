@@ -10,6 +10,7 @@ import { Menu } from '../../../models/menu';
 export class MenuComponent {
   activeLink: string;
   isMenuPin: boolean;
+  isNavbarHover: boolean;
 
   menu: Menu[] = [
     {
@@ -20,6 +21,9 @@ export class MenuComponent {
   ];
 
   constructor(private facade: LayoutFacade) {
+    this.facade.isNavbarHover$.subscribe(
+      result => (this.isNavbarHover = result),
+    );
     facade.routerLink$.subscribe(result => (this.activeLink = result));
     this.facade.isMenuPin$.subscribe(result => (this.isMenuPin = result));
   }
