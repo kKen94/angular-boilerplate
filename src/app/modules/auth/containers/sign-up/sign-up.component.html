@@ -1,0 +1,61 @@
+<div class="p-6">
+  <div class="mb-5 flex justify-center">
+    <p class="title">Sign Up</p>
+  </div>
+  <form [formGroup]="signUpForm" ngxsForm="auth.signUpForm" (ngSubmit)="signUp()">
+    <div class="flex items-center mb-6">
+      <div class="w-1/3">
+        <label class="input-label" for="username-signup">Username</label>
+      </div>
+      <div class="w-2/3 pt-2">
+        <input class="input" formControlName="username" id="username-signup" type="text" placeholder="jane_doe" required>
+      </div>
+    </div>
+    <div class="flex items-center mb-6">
+      <div class="w-1/3">
+        <label class="input-label" for="email-signup">Email</label>
+      </div>
+      <div class="w-2/3 pt-2">
+        <input class="input" formControlName="email" id="email-signup" type="text" placeholder="jane_doe@gmail.com" required>
+      </div>
+    </div>
+    <div class="flex items-center mb-6">
+      <div class="w-1/3">
+        <label class="input-label" for="fullname-signup">Fullname</label>
+      </div>
+      <div class="w-2/3 pt-2">
+        <input class="input" formControlName="fullname" id="fullname-signup" type="text" placeholder="Jane Doe" required>
+      </div>
+    </div>
+    <div class="flex items-center mb-6">
+      <div class="w-1/3">
+        <label class="input-label" for="company-signup">Company name</label>
+      </div>
+      <div class="w-2/3 pt-2">
+        <input class="input" formControlName="companyName" id="company-signup" type="text" placeholder="Jandoe SPA" required>
+      </div>
+    </div>
+    <div class="flex items-center mb-6">
+      <div class="w-1/3">
+        <label class="input-label" for="password-signup">Password</label>
+      </div>
+      <div class="w-2/3">
+        <input class="input" formControlName="password" id="password-signup" type="password" placeholder="********" required>
+      </div>
+    </div>
+    <div class="flex items-center mb-6">
+      <div class="w-1/3">
+        <label class="input-label" for="confirm-signup">Confirm password</label>
+      </div>
+      <div class="w-2/3">
+        <input class="input" formControlName="confirmPassword" id="confirm-signup" type="password" placeholder="********" required>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button class="btn-red" type="submit" [disabled]="!isFormValid">Sign Up</button>
+    </div>
+  </form>
+</div>
+<div class="p-6 flex justify-between">
+  <p class="text-red-700 cursor-pointer" (click)="goToLogin()">Login</p>
+</div>

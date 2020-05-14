@@ -17,3 +17,7 @@ export class ChangePassword {
 export class ResetPassword {
   static readonly type = '[Auth] Reset Password';
 }
+
+export class SignUp {
+  static readonly type = '[Auth] Sign Up';
+}

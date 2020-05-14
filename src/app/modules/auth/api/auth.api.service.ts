@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ChangePasswordDto, LoginDto } from '../models';
+import { ChangePasswordDto, LoginDto, SignUpDto } from '../models';
 
 @Injectable()
 export class AuthApi {
@@ -31,6 +31,13 @@ export class AuthApi {
     return this.http.post<any>(
       `https://localhost:5001/api/v1/users/auth/reset-password`,
       newPassword,
+    );
+  }
+
+  signUp(model: SignUpDto): Observable<any> {
+    return this.http.post<any>(
+      `https://localhost:5001/api/v1/users/auth/sign-up`,
+      model,
     );
   }
 }

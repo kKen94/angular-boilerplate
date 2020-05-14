@@ -20,3 +20,15 @@ export interface ResetPasswordForm {
 export interface PasswordRecoveryForm {
   username: string;
 }
+
+export interface SignUpDto {
+  username: string;
+  email: string;
+  fullname: string;
+  password: string;
+  companyName: string;
+}
+
+export interface SignUpForm extends SignUpDto {
+  confirmPassword: string;
+}

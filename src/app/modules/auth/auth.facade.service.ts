@@ -19,12 +19,14 @@ import {
   Logout,
   RecoverPassword,
   ResetPassword,
+  SignUp,
 } from './state/auth/auth.action';
 import { AuthState, AUTH_STATE_TOKEN } from './state/auth/auth.state';
 
 @Injectable()
 export class AuthFacade {
   @Select(AuthState.loginFormValidation) isLoginValid$: Observable<boolean>;
+  @Select(AuthState.signUpFormValidation) isSignUpValid$: Observable<boolean>;
   @Select(AuthState.passwordRecoveryFormValidation)
   isPasswordRecoveryValid$: Observable<boolean>;
   @Select(AuthState.changePasswordFormValidation)
@@ -49,6 +51,10 @@ export class AuthFacade {
       this.resetForm('auth.resetPasswordForm');
       this.goToLogin();
     });
+    this.actions.pipe(ofActionSuccessful(SignUp)).subscribe(() => {
+      this.resetForm('auth.signUpForm');
+      console.log('do something');
+    });
     this.actions
       .pipe(ofActionCompleted(Logout))
       .subscribe(() => this.goToLogin());
@@ -68,6 +74,10 @@ export class AuthFacade {
 
   resetPassword(): void {
     this.store.dispatch(new ResetPassword());
+  }
+
+  signUp(): void {
+    this.store.dispatch(new SignUp());
   }
 
   logout(): void {

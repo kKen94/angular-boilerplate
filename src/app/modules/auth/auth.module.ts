@@ -9,6 +9,7 @@ import { ChangePasswordComponent } from './containers/change-password/change-pas
 import { LoginComponent } from './containers/login/login.component';
 import { PasswordRecoveryComponent } from './containers/password-recovery/password-recovery.component';
 import { ResetPasswordComponent } from './containers/reset-password/reset-password.component';
+import { SignUpComponent } from './containers/sign-up/sign-up.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const AUTH_COMPONENTS = [
@@ -17,10 +18,11 @@ const AUTH_COMPONENTS = [
   PasswordRecoveryComponent,
   ChangePasswordComponent,
   ResetPasswordComponent,
+  SignUpComponent,
 ];
 
 @NgModule({
-  declarations: [...AUTH_COMPONENTS],
+  declarations: AUTH_COMPONENTS,
   imports: [
     CommonModule,
     RouterModule,

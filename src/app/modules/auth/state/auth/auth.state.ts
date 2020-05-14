@@ -11,6 +11,7 @@ import {
   LoginDto,
   PasswordRecoveryForm,
   ResetPasswordForm,
+  SignUpForm,
 } from '../../models';
 import {
   ChangePassword,
@@ -18,6 +19,7 @@ import {
   Logout,
   RecoverPassword,
   ResetPassword,
+  SignUp,
 } from './auth.action';
 
 /******************************** STATE MODEL ********************************/
@@ -28,6 +30,7 @@ interface AuthStateModel {
   recoveryForm: FormState<PasswordRecoveryForm>;
   loginForm: FormState<LoginDto>;
   changePasswordForm: FormState<ChangePasswordForm>;
+  signUpForm: FormState<SignUpForm>;
   resetPasswordForm: FormState<ResetPasswordForm>;
 }
 
@@ -36,6 +39,7 @@ class AuthStateModel {
     this.token = null;
     this.callbackUrl = '/';
     this.recoveryForm = new FormState();
+    this.signUpForm = new FormState();
     this.loginForm = new FormState();
     this.changePasswordForm = new FormState();
     this.resetPasswordForm = new FormState();
@@ -54,6 +58,8 @@ export const AUTH_STATE_TOKEN = new StateToken<AuthStateModel>('auth');
 
 @Injectable()
 export class AuthState {
+  /***************************** selectors ************************************/
+
   @Selector([AUTH_STATE_TOKEN])
   static token(state: AuthStateModel): string | null {
     return state.token;
@@ -90,7 +96,14 @@ export class AuthState {
     return state.resetPasswordForm.status === 'VALID';
   }
 
+  @Selector([AUTH_STATE_TOKEN])
+  static signUpFormValidation(state: AuthStateModel) {
+    return state.signUpForm.status === 'VALID';
+  }
+
   constructor(private authApi: AuthApi) {}
+
+  /*********************** actions ****************************/
 
   @Action(Login)
   login(ctx: StateContext<AuthStateModel>): Observable<{ token: string }> {
@@ -113,6 +126,12 @@ export class AuthState {
   recoverPassword(ctx: StateContext<AuthStateModel>): Observable<any> {
     const username = ctx.getState().recoveryForm.model.username;
     return this.authApi.recoverPassword(username);
+  }
+
+  @Action(SignUp)
+  signUp(ctx: StateContext<AuthStateModel>): Observable<any> {
+    const model = ctx.getState().signUpForm.model;
+    return this.authApi.signUp(model);
   }
 
   @Action(ChangePassword)
