@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Menu, QuickPanel, TogglePinMenu } from './state/layout.action';
+import { Menu, Navbar, QuickPanel } from './state/layout.action';
 import { LayoutState } from './state/layout.state';
 import OpenPanel = QuickPanel.Open;
 import ClosePanel = QuickPanel.Close;
 import OpenMenu = Menu.Open;
 import CloseMenu = Menu.Close;
+import TogglePin = Menu.TogglePin;
+import HoverIn = Navbar.HoverIn;
+import HoverOut = Navbar.HoverOut;
 
 @Injectable()
 export class LayoutFacade {
