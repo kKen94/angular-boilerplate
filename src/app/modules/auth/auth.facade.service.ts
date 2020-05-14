@@ -7,13 +7,12 @@ import {
 import { Navigate } from '@ngxs/router-plugin';
 import {
   Actions,
-  ofActionDispatched,
+  ofActionCompleted,
   ofActionSuccessful,
   Select,
   Store,
 } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AuthApi } from './api';
 import {
   ChangePassword,
   Login,
@@ -33,11 +32,7 @@ export class AuthFacade {
   @Select(AuthState.resetPasswordFormValidation)
   isResetPasswordValid$: Observable<boolean>;
 
-  constructor(
-    private authApi: AuthApi,
-    private store: Store,
-    private actions: Actions,
-  ) {
+  constructor(private store: Store, private actions: Actions) {
     this.actions.pipe(ofActionSuccessful(Login)).subscribe(() => {
       this.resetForm('auth.loginForm');
       this.goToCallbackUrl();
@@ -55,7 +50,7 @@ export class AuthFacade {
       this.goToLogin();
     });
     this.actions
-      .pipe(ofActionDispatched(Logout))
+      .pipe(ofActionCompleted(Logout))
       .subscribe(() => this.goToLogin());
   }
 

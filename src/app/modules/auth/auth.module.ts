@@ -9,6 +9,7 @@ import { ChangePasswordComponent } from './containers/change-password/change-pas
 import { LoginComponent } from './containers/login/login.component';
 import { PasswordRecoveryComponent } from './containers/password-recovery/password-recovery.component';
 import { ResetPasswordComponent } from './containers/reset-password/reset-password.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const AUTH_COMPONENTS = [
   AuthComponent,
@@ -26,6 +27,6 @@ const AUTH_COMPONENTS = [
     ReactiveFormsModule,
     NgxsFormPluginModule,
   ],
-  providers: [AuthApi],
+  providers: [AuthApi, AuthGuard],
 })
 export class AuthModule {}

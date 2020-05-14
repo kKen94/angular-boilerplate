@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormState } from '@model';
 import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -60,7 +61,8 @@ export class AuthState {
 
   @Selector([AUTH_STATE_TOKEN])
   static isAuthenticated(state: AuthStateModel): boolean {
-    return !!state.token;
+    const helper = new JwtHelperService();
+    return !helper.isTokenExpired(state.token);
   }
 
   @Selector([AUTH_STATE_TOKEN])

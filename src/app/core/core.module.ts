@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthFacade } from '../modules/auth/auth.facade.service';
 import { AuthState } from '../modules/auth/state/auth/auth.state';
+import { TokenInterceptor } from './interceptor/token.interceptor';
 
 // export const initializeConfigs = (
 //   appConfig: ConfigService,
@@ -58,7 +59,7 @@ const STATES = [AuthState];
     // LanguageService,
     // TranslationService,
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
     // {
     //   provide: APP_INITIALIZER,
