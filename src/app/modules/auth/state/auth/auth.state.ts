@@ -66,6 +66,34 @@ export class AuthState {
   }
 
   @Selector([AUTH_STATE_TOKEN])
+  static fullname(state: AuthStateModel): string | null {
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(state.token);
+    return decodedToken['given_name'];
+  }
+
+  @Selector([AUTH_STATE_TOKEN])
+  static username(state: AuthStateModel): string | null {
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(state.token);
+    return decodedToken['unique_name'];
+  }
+
+  @Selector([AUTH_STATE_TOKEN])
+  static email(state: AuthStateModel): string | null {
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(state.token);
+    return decodedToken['email'];
+  }
+
+  @Selector([AUTH_STATE_TOKEN])
+  static userId(state: AuthStateModel): string | null {
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(state.token);
+    return decodedToken['nameid'];
+  }
+
+  @Selector([AUTH_STATE_TOKEN])
   static isAuthenticated(state: AuthStateModel): boolean {
     const helper = new JwtHelperService();
     return !helper.isTokenExpired(state.token);

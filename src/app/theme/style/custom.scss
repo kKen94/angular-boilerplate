@@ -17,6 +17,22 @@
   @apply hidden;
 }
 
+.panel-button {
+  @apply px-4;
+  @apply py-4;
+  @apply text-gray-800;
+  @apply no-underline;
+  @apply font-light;
+
+  &:hover {
+    @apply bg-gray-100;
+  }
+
+  &:focus {
+    @apply bg-gray-300;
+  }
+}
+
 .aside-vertical {
   box-shadow: 0 2px 8px 0 rgba(0,0,0,.35);
   @apply h-full;
@@ -73,6 +89,23 @@
   @apply bg-gray-100;
   @apply sticky;
   @apply top-0;
+}
+
+.button-header {
+  @apply h-full;
+  @apply flex;
+  @apply flex-row;
+  @apply items-center;
+  @apply cursor-pointer;
+  @apply border-gray-300;
+
+  &:hover {
+    @apply bg-gray-300;
+  }
+
+  &:focus {
+    @apply bg-gray-400;
+  }
 }
 
 .full {

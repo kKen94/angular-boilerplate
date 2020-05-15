@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { AuthState } from '../../modules/auth/state/auth/auth.state';
 import { Menu, Navbar, QuickPanel } from './state/layout.action';
 import { LayoutState } from './state/layout.state';
 import OpenPanel = QuickPanel.Open;
@@ -19,6 +20,7 @@ export class LayoutFacade {
   @Select(LayoutState.openMenu) isMenuOpen$: Observable<boolean>;
   @Select(LayoutState.pinMenu) isMenuPin$: Observable<boolean>;
   @Select(RouterState.url) routerLink$: Observable<string>;
+  @Select(AuthState.username) username$: Observable<string>;
 
   constructor(private store: Store) {}
 
