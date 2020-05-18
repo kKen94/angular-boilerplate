@@ -57,6 +57,7 @@
     "@ngxs/store": "^3.6.2",
     "autoprefixer": "^9.7.6",
     "rxjs": "~6.5.4",
+    "sweetalert2": "^9.10.13",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
