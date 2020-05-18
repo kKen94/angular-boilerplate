@@ -12,6 +12,7 @@ import { AuthFacade } from '../modules/auth/auth.facade.service';
 import { AuthState } from '../modules/auth/state/auth/auth.state';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ConfigService } from './services/config.service';
+import { ErrorInterceptor } from './interceptor/error.interceptor';
 
 export const initializeConfigs = (
   appConfig: ConfigService,
@@ -59,7 +60,7 @@ const STATES = [AuthState];
     // SettingsService,
     // LanguageService,
     // TranslationService,
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
     {
