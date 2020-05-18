@@ -9,7 +9,7 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from '../../environments/environment';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthFacade } from '../modules/auth/auth.facade.service';
-import { AuthState } from '../modules/auth/state/auth/auth.state';
+import { AuthState } from '../modules/auth/state/auth.state';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ConfigService } from './services/config.service';
 import { ErrorInterceptor } from './interceptor/error.interceptor';

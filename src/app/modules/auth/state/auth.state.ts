@@ -4,7 +4,7 @@ import { FormState } from '@model';
 import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AuthApi } from '../../api';
+import { AuthApi } from '../api';
 import {
   ChangePasswordDto,
   ChangePasswordForm,
@@ -12,7 +12,7 @@ import {
   PasswordRecoveryForm,
   ResetPasswordForm,
   SignUpForm,
-} from '../../models';
+} from '../models';
 import {
   ChangePassword,
   Login,

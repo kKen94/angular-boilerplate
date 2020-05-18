@@ -20,8 +20,8 @@ import {
   RecoverPassword,
   ResetPassword,
   SignUp,
-} from './state/auth/auth.action';
-import { AuthState, AUTH_STATE_TOKEN } from './state/auth/auth.state';
+} from './state/auth.action';
+import { AuthState, AUTH_STATE_TOKEN } from './state/auth.state';
 
 @Injectable()
 export class AuthFacade {

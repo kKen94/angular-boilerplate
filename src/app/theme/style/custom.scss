@@ -38,7 +38,7 @@
   @apply h-full;
   @apply bg-bluegray-800;
   z-index: 1;
-  @apply w-1/7;
+  @apply min-w-1/7;
 
   &.folded {
     @apply w-16;

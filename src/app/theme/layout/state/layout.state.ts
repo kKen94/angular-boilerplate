@@ -61,11 +61,9 @@ export class LayoutState {
 
   @Action(HoverInNavbar)
   hoverInNavbar(ctx: StateContext<LayoutStateModel>): void {
-    console.log(ctx.getState());
     ctx.patchState({
       hoverNavbar: true,
     });
-    console.log(ctx.getState());
   }
 
   @Action(HoverOutNavbar)

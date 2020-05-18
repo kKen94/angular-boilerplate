@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AuthState } from '../../modules/auth/state/auth/auth.state';
+import { AuthState } from '../../modules/auth/state/auth.state';
 import { Menu, Navbar, QuickPanel } from './state/layout.action';
 import { LayoutState } from './state/layout.state';
 import OpenPanel = QuickPanel.Open;
