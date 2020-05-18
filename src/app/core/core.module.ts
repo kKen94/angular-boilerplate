@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
@@ -11,10 +11,11 @@ import { AppRoutingModule } from '../app-routing.module';
 import { AuthFacade } from '../modules/auth/auth.facade.service';
 import { AuthState } from '../modules/auth/state/auth/auth.state';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { ConfigService } from './services/config.service';
 
-// export const initializeConfigs = (
-//   appConfig: ConfigService,
-// ): (() => Promise<void>) => () => appConfig.load();
+export const initializeConfigs = (
+  appConfig: ConfigService,
+): (() => Promise<void>) => () => appConfig.load();
 // export const initializeSettings = (
 //   appSettings: SettingsService,
 // ): (() => Promise<void>) => () => appSettings.load();
@@ -54,19 +55,19 @@ const STATES = [AuthState];
   ],
   providers: [
     AuthFacade,
-    // ConfigService,
+    ConfigService,
     // SettingsService,
     // LanguageService,
     // TranslationService,
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initializeConfigs,
-    //   deps: [ConfigService],
-    //   multi: true,
-    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeConfigs,
+      deps: [ConfigService],
+      multi: true,
+    },
     // {
     //   provide: APP_INITIALIZER,
     //   useFactory: initializeSettings,

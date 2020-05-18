@@ -8,6 +8,7 @@
     "e2e": "ng e2e",
     "start": "cross-env NODE_ENV=dev ng serve --open --port 4300",
     "build:dev": "cross-env NODE_ENV=dev ng build",
+    "build:staging": "cross-env NODE_ENV=staging ng build -c=staging",
     "build:prod": "cross-env NODE_ENV=prod ng build --prod",
     "analyze:prod": "cross-env NODE_ENV=prod ng build --prod --stats-json && yarn run webpack-bundle-analyzer dist/frontend/stats-es2015.json",
     "format:check": "prettier --list-different \"src/**/*.{ts,tsx}\"",
