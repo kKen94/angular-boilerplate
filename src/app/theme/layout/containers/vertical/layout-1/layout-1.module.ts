@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ContentModule } from '../../../components/content/content.module';
 import { HeaderModule } from '../../../components/header/header.module';
 import { NavbarVerticalModule } from '../../../components/navbar/vertical/navbar-vertical.module';
@@ -14,6 +15,7 @@ import { VerticalLayout1Component } from './layout-1.component';
     HeaderModule,
     QuickPanelModule,
     CommonModule,
+    FontAwesomeModule,
   ],
   exports: [VerticalLayout1Component],
 })

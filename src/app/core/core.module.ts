@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthFacade } from '../modules/auth/auth.facade.service';
 import { AuthState } from '../modules/auth/state/auth.state';
+import { LayoutFacade } from '../theme/layout/layout.facade.service';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ConfigService } from './services/config.service';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
@@ -56,6 +57,7 @@ const STATES = [AuthState];
   ],
   providers: [
     AuthFacade,
+    LayoutFacade,
     ConfigService,
     // SettingsService,
     // LanguageService,
@@ -67,6 +69,12 @@ const STATES = [AuthState];
       provide: APP_INITIALIZER,
       useFactory: initializeConfigs,
       deps: [ConfigService],
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => {}, // Trick to listen on RouterDataResolved in LayoutFacade immediatly
+      deps: [LayoutFacade],
       multi: true,
     },
     // {

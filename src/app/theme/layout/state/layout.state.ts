@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
-import { Menu, Navbar, QuickPanel } from './layout.action';
+import { MENU } from '../components/navbar/menu/menu';
 import HoverInNavbar = Navbar.HoverIn;
 import HoverOutNavbar = Navbar.HoverOut;
 import OpenPanel = QuickPanel.Open;
@@ -8,6 +8,8 @@ import ClosePanel = QuickPanel.Close;
 import OpenMenu = Menu.Open;
 import CloseMenu = Menu.Close;
 import TogglePin = Menu.TogglePin;
+import { Menu as MenuModel } from '../models/menu';
+import { Menu, Navbar, QuickPanel, SetMenu } from './layout.action';
 
 /******************************** STATE MODEL ********************************/
 
@@ -16,6 +18,7 @@ interface LayoutStateModel {
   openPanel: boolean;
   openMenu: boolean;
   pinMenu: boolean;
+  actualMenu: MenuModel;
 }
 
 class LayoutStateModel {
@@ -24,6 +27,7 @@ class LayoutStateModel {
     this.openPanel = false;
     this.openMenu = true;
     this.pinMenu = true;
+    this.actualMenu = undefined;
   }
 }
 
@@ -57,6 +61,11 @@ export class LayoutState {
   @Selector([LAYOUT_STATE_TOKEN])
   static hoverNavbar(state: LayoutStateModel): boolean {
     return state.hoverNavbar;
+  }
+
+  @Selector([LAYOUT_STATE_TOKEN])
+  static actualMenu(state: LayoutStateModel): MenuModel {
+    return state.actualMenu;
   }
 
   @Action(HoverInNavbar)
@@ -106,6 +115,14 @@ export class LayoutState {
     const pinMenu = ctx.getState().pinMenu;
     ctx.patchState({
       pinMenu: action.open ?? !pinMenu,
+    });
+  }
+
+  @Action(SetMenu)
+  setMenu(ctx: StateContext<LayoutStateModel>, action: SetMenu): void {
+    const menu = MENU.find(c => c.routerLink.includes(action.activeUrl));
+    ctx.patchState({
+      actualMenu: menu,
     });
   }
 }

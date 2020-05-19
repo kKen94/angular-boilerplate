@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import * as tailwind from '../../../../../../../tailwind.config.js';
 import { LayoutFacade } from '../../../layout.facade.service';
+import { Menu } from '../../../models/menu';
 
 @Component({
   selector: 'app-vertical-layout-1',
@@ -19,6 +20,7 @@ export class VerticalLayout1Component implements OnInit {
   isPanelOpen: boolean;
   isMenuOpen: boolean;
   isMenuPin: boolean;
+  actualMenu: Menu;
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
@@ -54,6 +56,7 @@ export class VerticalLayout1Component implements OnInit {
     this.facade.isPanelOpen$.subscribe(result => (this.isPanelOpen = result));
     this.facade.isMenuOpen$.subscribe(result => (this.isMenuOpen = result));
     this.facade.isMenuPin$.subscribe(result => (this.isMenuPin = result));
+    this.facade.menu$.subscribe(result => (this.actualMenu = result));
   }
 
   ngOnInit() {

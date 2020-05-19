@@ -35,3 +35,8 @@ export namespace Navbar {
     static readonly type = '[Layout] Hover navbar out';
   }
 }
+
+export class SetMenu {
+  static readonly type = '[Layout] Set menu';
+  constructor(public activeUrl: string) {}
+}

@@ -1,5 +1,6 @@
 @import "variables";
 @import "animations";
+@import "override";
 
 * {
   @apply font-custom;
@@ -42,6 +43,7 @@
 
   &.folded {
     @apply w-16;
+    @apply min-w-16;
 
     &.hovered {
       @apply absolute;

@@ -2,7 +2,7 @@
 
 <a *ngFor="let item of menu"
    class="menu"
-   [ngClass]="{'active': item.routerLink === activeLink, 'unpinned': !isMenuPin && !isNavbarHover}"
+   [ngClass]="{'active': item.id === actualMenu?.id, 'unpinned': !isMenuPin && !isNavbarHover}"
    (click)="clickedItem(item.routerLink)">
   <fa-icon [icon]="item.icon" class="mr-4"></fa-icon>
   <p *ngIf="isMenuPin || isNavbarHover">{{item.displayedName}}</p>
