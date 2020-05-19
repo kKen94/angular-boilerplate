@@ -14,6 +14,7 @@ import { LayoutFacade } from '../theme/layout/layout.facade.service';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ConfigService } from './services/config.service';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { LayoutState } from '../theme/layout/state/layout.state';
 
 export const initializeConfigs = (
   appConfig: ConfigService,
@@ -25,7 +26,7 @@ export const initializeConfigs = (
 //   appLanguage: LanguageService,
 // ): (() => Promise<void>) => () => appLanguage.load();
 
-const STATES = [AuthState];
+const STATES = [AuthState, LayoutState];
 
 @NgModule({
   imports: [

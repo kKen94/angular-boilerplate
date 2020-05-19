@@ -6,4 +6,5 @@ export interface Menu {
   routerLink: string;
   // children?: Menu[];
   icon: IconDefinition;
+  showSearch: boolean;
 }

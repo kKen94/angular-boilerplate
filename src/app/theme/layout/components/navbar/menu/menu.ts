@@ -7,5 +7,6 @@ export const MENU: Menu[] = [
     displayedName: 'Dashboard',
     icon: faHome,
     routerLink: '/pages/dashboard',
+    showSearch: true,
   },
 ];

@@ -2,6 +2,10 @@
 @import "animations";
 @import "override";
 
+[hidden] {
+  display: none !important;
+}
+
 * {
   @apply font-custom;
 
@@ -81,7 +85,7 @@
   }
 
   &.active {
-    @apply bg-blue-400;
+    @apply bg-lightblue-600;
   }
 }
 
@@ -214,6 +218,18 @@
     @apply font-light;
     @apply text-sm;
   }
+}
+
+.page-heading {
+  @apply bg-lightblue-600;
+  min-height: 13%;
+  @apply w-full;
+  @apply flex;
+  @apply flex-row;
+  @apply justify-between;
+  @apply items-center;
+  @apply text-white;
+  @apply text-2xl;
 }
 
 /************************************************************************************************************************************************************/

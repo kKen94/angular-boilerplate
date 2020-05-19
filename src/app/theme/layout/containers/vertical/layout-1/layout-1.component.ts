@@ -7,6 +7,8 @@ import {
 import * as tailwind from '../../../../../../../tailwind.config.js';
 import { LayoutFacade } from '../../../layout.facade.service';
 import { Menu } from '../../../models/menu';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 
 @Component({
   selector: 'app-vertical-layout-1',
@@ -21,6 +23,8 @@ export class VerticalLayout1Component implements OnInit {
   isMenuOpen: boolean;
   isMenuPin: boolean;
   actualMenu: Menu;
+  faSearch = faSearch;
+  searchForm: FormGroup;
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
@@ -49,7 +53,10 @@ export class VerticalLayout1Component implements OnInit {
     this.previousWidth = event.target.innerWidth;
   }
 
-  constructor(private facade: LayoutFacade) {
+  constructor(private facade: LayoutFacade, private fb: FormBuilder) {
+    this.searchForm = fb.group({
+      textField: [''],
+    });
     this.facade.isNavbarHover$.subscribe(
       result => (this.isNavbarHover = result),
     );

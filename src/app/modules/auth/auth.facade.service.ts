@@ -22,6 +22,7 @@ import {
   SignUp,
 } from './state/auth.action';
 import { AuthState, AUTH_STATE_TOKEN } from './state/auth.state';
+import { resetForm, SweetHelper } from '@utility';
 
 @Injectable()
 export class AuthFacade {
@@ -36,24 +37,25 @@ export class AuthFacade {
 
   constructor(private store: Store, private actions: Actions) {
     this.actions.pipe(ofActionSuccessful(Login)).subscribe(() => {
-      this.resetForm('auth.loginForm');
+      resetForm(this.store, 'auth.loginForm');
       this.goToCallbackUrl();
     });
     this.actions.pipe(ofActionSuccessful(RecoverPassword)).subscribe(() => {
-      this.resetForm('auth.recoveryForm');
+      resetForm(this.store, 'auth.recoveryForm');
       this.goToLogin();
     });
     this.actions.pipe(ofActionSuccessful(ChangePassword)).subscribe(() => {
-      this.resetForm('auth.changePasswordForm');
+      resetForm(this.store, 'auth.changePasswordForm');
       this.goToLogin();
     });
     this.actions.pipe(ofActionSuccessful(ResetPassword)).subscribe(() => {
-      this.resetForm('auth.resetPasswordForm');
+      resetForm(this.store, 'auth.resetPasswordForm');
       this.goToLogin();
     });
     this.actions.pipe(ofActionSuccessful(SignUp)).subscribe(() => {
-      this.resetForm('auth.signUpForm');
-      console.log('do something');
+      resetForm(this.store, 'auth.signUpForm');
+      SweetHelper.fireToast('Sign up successfully 🥳', 'success');
+      this.goToLogin();
     });
     this.actions
       .pipe(ofActionCompleted(Logout))
@@ -101,13 +103,5 @@ export class AuthFacade {
   private goToCallbackUrl(): void {
     const callbackUrl = this.store.selectSnapshot(AUTH_STATE_TOKEN).callbackUrl;
     this.store.dispatch(new Navigate([callbackUrl]));
-  }
-
-  /********************* PRIVATE *****************************/
-
-  private resetForm(path: string): void {
-    this.store.dispatch(new SetFormPristine(path));
-    this.store.dispatch(new UpdateFormStatus({ status: '', path }));
-    this.store.dispatch(new UpdateFormValue({ value: undefined, path }));
   }
 }

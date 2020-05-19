@@ -10,6 +10,8 @@ import CloseMenu = Menu.Close;
 import TogglePin = Menu.TogglePin;
 import { Menu as MenuModel } from '../models/menu';
 import { Menu, Navbar, QuickPanel, SetMenu } from './layout.action';
+import { SearchForm } from '../models/layout';
+import { FormState } from '@model';
 
 /******************************** STATE MODEL ********************************/
 
@@ -19,6 +21,7 @@ interface LayoutStateModel {
   openMenu: boolean;
   pinMenu: boolean;
   actualMenu: MenuModel;
+  searchForm: FormState<SearchForm>;
 }
 
 class LayoutStateModel {
@@ -28,6 +31,7 @@ class LayoutStateModel {
     this.openMenu = true;
     this.pinMenu = true;
     this.actualMenu = undefined;
+    this.searchForm = new FormState();
   }
 }
 
@@ -66,6 +70,11 @@ export class LayoutState {
   @Selector([LAYOUT_STATE_TOKEN])
   static actualMenu(state: LayoutStateModel): MenuModel {
     return state.actualMenu;
+  }
+
+  @Selector([LAYOUT_STATE_TOKEN])
+  static textSearch(state: LayoutStateModel): string {
+    return state.searchForm.model.textField;
   }
 
   @Action(HoverInNavbar)

@@ -19,6 +19,7 @@ import HoverOut = Navbar.HoverOut;
 import { Menu as MenuModel } from './models/menu';
 import { Menu, Navbar, QuickPanel, SetMenu } from './state/layout.action';
 import { LayoutState } from './state/layout.state';
+import { resetForm } from '@utility';
 
 @Injectable()
 export class LayoutFacade {
@@ -28,6 +29,7 @@ export class LayoutFacade {
   @Select(LayoutState.pinMenu) isMenuPin$: Observable<boolean>;
   @Select(LayoutState.actualMenu) menu$: Observable<MenuModel>;
   @Select(AuthState.username) username$: Observable<string>;
+  @Select(LayoutState.textSearch) search$: Observable<string>;
 
   constructor(
     private store: Store,
@@ -42,6 +44,7 @@ export class LayoutFacade {
     this.actions$.pipe(ofActionSuccessful(RouterDataResolved)).subscribe(() => {
       const activeUrl = this.store.selectSnapshot(RouterState.url);
       this.store.dispatch(new SetMenu(activeUrl));
+      resetForm(this.store, 'layout.searchForm');
     });
   }
 
