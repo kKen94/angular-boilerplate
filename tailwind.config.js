@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'custom': ['Muli', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'custom': ['Montserrat', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       colors: {
         primary: 'var(--color-primary)',
