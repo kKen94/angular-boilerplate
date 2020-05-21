@@ -22,6 +22,16 @@
   @apply hidden;
 }
 
+.auth-box {
+  @apply rounded-box;
+  @apply border-none;
+  @apply shadow-md;
+  @apply bg-contain;
+  background-image: url('./assets/images/oth/login-background.svg');
+  background-size: 100%;
+  height: 700px;
+}
+
 .panel-button {
   @apply px-4;
   @apply py-4;
