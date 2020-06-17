@@ -3,7 +3,7 @@
     <app-navbar-vertical class="aside-vertical" [ngClass]="{'folded': !isMenuPin, 'hovered': !isMenuPin && isNavbarHover}" *ngIf="isMenuOpen" (mouseenter)="hoverInNavbar()" (mouseleave)="hoverOutNavbar()"></app-navbar-vertical>
     <div class="flex-auto flex flex-col" [ngClass]="{'backdrop': isMenuOpen, 'pl-16': !isMenuPin && isNavbarHover}" (click)="closeMenu()">
       <app-header class="header"></app-header>
-      <div class="page-heading">
+      <div class="page-heading" *ngIf="actualMenu">
         <div class="flex flex-row px-6 xs:px-2">
           <fa-icon class="font-bold" *ngIf="actualMenu" [icon]="actualMenu?.icon"></fa-icon>
           <p class="ml-6 xs:ml-2">{{actualMenu?.displayedName}}</p>
@@ -18,7 +18,7 @@
           </form>
         </div>
       </div>
-      <main class="flex-auto">
+      <main class="flex-auto" style="height: calc(100% - 13% - 4rem)">
         <app-content></app-content>
       </main>
     </div>

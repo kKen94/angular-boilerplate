@@ -1,20 +1,23 @@
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModalModule } from '@components';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsWebsocketCustomPluginModule } from '@plugin/@ngxs';
+import { noop } from '@utility';
 import { environment } from '../../environments/environment';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthFacade } from '../modules/auth/auth.facade.service';
 import { AuthState } from '../modules/auth/state/auth.state';
 import { LayoutFacade } from '../theme/layout/layout.facade.service';
-import { TokenInterceptor } from './interceptor/token.interceptor';
-import { ConfigService } from './services/config.service';
-import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { LayoutState } from '../theme/layout/state/layout.state';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { ConfigService } from './services/config.service';
 
 export const initializeConfigs = (
   appConfig: ConfigService,
@@ -40,11 +43,13 @@ const STATES = [AuthState, LayoutState];
     NgxsFormPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
+    NgxsWebsocketCustomPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({
       collapsed: false,
       disabled: environment.production,
       logger: console,
     }),
+    ModalModule.forRoot(),
   ],
   exports: [
     HttpClientModule,
@@ -55,17 +60,15 @@ const STATES = [AuthState, LayoutState];
     NgxsRouterPluginModule,
     NgxsReduxDevtoolsPluginModule,
     NgxsLoggerPluginModule,
+    NgxsWebsocketCustomPluginModule,
+    ModalModule,
   ],
   providers: [
     AuthFacade,
     LayoutFacade,
     ConfigService,
-    // SettingsService,
-    // LanguageService,
-    // TranslationService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeConfigs,
@@ -74,22 +77,10 @@ const STATES = [AuthState, LayoutState];
     },
     {
       provide: APP_INITIALIZER,
-      useFactory: () => () => {}, // Trick to listen on RouterDataResolved in LayoutFacade immediatly
+      useFactory: noop, // Trick to listen on RouterDataResolved in LayoutFacade immediatly
       deps: [LayoutFacade],
       multi: true,
     },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initializeSettings,
-    //   deps: [SettingsService],
-    //   multi: true,
-    // },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: initializeLanguages,
-    //   deps: [LanguageService],
-    //   multi: true,
-    // },
   ],
 })
 export class CoreModule {

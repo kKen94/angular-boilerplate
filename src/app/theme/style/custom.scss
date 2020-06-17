@@ -121,8 +121,14 @@
     @apply bg-gray-300;
   }
 
-  &:focus {
+  &:active {
     @apply bg-gray-400;
+  }
+
+  &.focus {
+    &:focus {
+      @apply bg-gray-400;
+    }
   }
 }
 

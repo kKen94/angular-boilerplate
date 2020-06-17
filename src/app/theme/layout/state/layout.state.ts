@@ -129,7 +129,16 @@ export class LayoutState {
 
   @Action(SetMenu)
   setMenu(ctx: StateContext<LayoutStateModel>, action: SetMenu): void {
-    const menu = MENU.find(c => c.routerLink.includes(action.activeUrl));
+    let menu = MENU.find(c => c.routerLink.includes(action.activeUrl));
+    if (!menu && !action.activeUrl.includes('cart')) {
+      const s = action.activeUrl.split('/').slice(0, -1).join('/');
+      menu = MENU.find(
+        c =>
+          c.routerLink.includes(s) &&
+          c.routerLink.includes('{') &&
+          c.routerLink.includes('}'),
+      );
+    }
     ctx.patchState({
       actualMenu: menu,
     });

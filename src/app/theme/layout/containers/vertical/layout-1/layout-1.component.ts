@@ -4,11 +4,11 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import * as tailwind from '../../../../../../../tailwind.config.js';
-import { LayoutFacade } from '../../../layout.facade.service';
-import { Menu } from '../../../models/menu';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
+import * as tailwind from '@tailwind-config';
+import { LayoutFacade } from '../../../layout.facade.service';
+import { Menu } from '../../../models/menu';
 
 @Component({
   selector: 'app-vertical-layout-1',

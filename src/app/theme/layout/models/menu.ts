@@ -7,4 +7,5 @@ export interface Menu {
   // children?: Menu[];
   icon: IconDefinition;
   showSearch: boolean;
+  visible: boolean;
 }

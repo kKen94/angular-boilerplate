@@ -1,9 +1,13 @@
 <p class="h-10 pl-6 mt-2 text-sm text-gray-500 font-semibold text-sm" *ngIf="isMenuPin || isNavbarHover">MENU</p>
 
-<a *ngFor="let item of menu"
-   class="menu"
-   [ngClass]="{'active': item.id === actualMenu?.id, 'unpinned': !isMenuPin && !isNavbarHover}"
-   (click)="clickedItem(item.routerLink)">
-  <fa-icon [icon]="item.icon" class="mr-4"></fa-icon>
-  <p *ngIf="isMenuPin || isNavbarHover">{{item.displayedName}}</p>
-</a>
+<ng-container *ngFor="let item of menu">
+  <a *ngIf="item.visible"
+     class="menu"
+     [ngClass]="{'active': checkId(item.id), 'unpinned': !isMenuPin && !isNavbarHover}"
+     (click)="clickedItem(item.routerLink)">
+    <div class="flex flex-row">
+      <fa-icon [icon]="item.icon" class="mr-4"></fa-icon>
+      <p *ngIf="(isMenuPin || isNavbarHover)">{{item.displayedName}}</p>
+    </div>
+  </a>
+</ng-container>

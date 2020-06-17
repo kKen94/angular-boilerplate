@@ -73,6 +73,7 @@
     "quotemark": [true, "single"],
     "radix": false,
     "restrict-plus-operands": true,
+    "semicolon": true,
     "ter-arrow-parens": [true, "as-needed"],
     "trailing-comma": [true, { "multiline": "always", "singleline": "never" }],
     "template-banana-in-box": true,

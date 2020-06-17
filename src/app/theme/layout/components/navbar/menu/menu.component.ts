@@ -27,4 +27,8 @@ export class MenuComponent {
       this.facade.goToLink(routerLink);
     }
   }
+
+  checkId(id: string): boolean {
+    return this.actualMenu?.id.includes(id);
+  }
 }
