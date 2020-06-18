@@ -1,0 +1,2 @@
+# angular-boilerplate
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e4fb27cbff64bbea7f05a20ec7f3be9)](https://app.codacy.com/gh/t2c-dev/angular-boilerplate?utm_source=github.com&utm_medium=referral&utm_content=t2c-dev/angular-boilerplate&utm_campaign=Badge_Grade_Dashboard)
