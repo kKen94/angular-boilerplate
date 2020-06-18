@@ -1,0 +1,21 @@
+<div *ngIf="overlayVisible"
+     [style.z-index]="visible ? layerPosition-1 : -1"
+     [ngClass]="{'transparent':!backdrop, 'modal-overlay':true, 'ce-overlay-open':openedClass}"
+     (mousedown)="dismiss($event)" #ceOverlay>
+  <div [style.z-index]="visible ? layerPosition : -1"
+       [ngClass]="['ce-dialog', customClass, openedClass ? 'ce-dialog-open': 'ce-dialog-close']" #ceDialog
+       [attr.aria-hidden]="!openedClass"
+       [attr.aria-label]="ariaLabel"
+       [attr.aria-labelledby]="ariaLabelledBy"
+       [attr.aria-describedby]="ariaDescribedBy">
+    <div class="ce-content" #ceContent>
+      <div class="ce-body">
+        <ng-template #dynamicContent></ng-template>
+        <ng-content></ng-content>
+      </div>
+      <button type="button" *ngIf="closable" (click)="close()" aria-label="Close" class="ce-dialog-btn-close">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+@screen xs {
+  .quick-panel {
+    @apply w-3/4;
+  }
+
+  .aside-vertical {
+    @apply min-w-3/4;
+  }
+}

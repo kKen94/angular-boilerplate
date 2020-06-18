@@ -1,0 +1,28 @@
+<header class="h-full flex justify-between">
+  <div>
+    <button class="w-16 border-r button-header justify-center" id="toggle-menu" (click)="openMenu($event)">
+      <fa-icon [icon]="faBars" class="text-xl text-gray-600"></fa-icon>
+    </button>
+  </div>
+  <div class="flex flex-row">
+    <button class="justify-between button-header focus" on-focus="showPanel = true" on-focusout="showPanel = false">
+      <img src="assets/images/avatar/avatar.png" class="w-1/3 px-2" alt="avatar">
+      <p class="px-2 text-gray-800">{{username || 'user'}}</p>
+      <fa-icon [icon]="faChevronDown" class="text-gray-700 text-xs px-2"></fa-icon>
+    </button>
+    <div class="bg-white rounded shadow-md mt-2 absolute mt-16 top-0 overflow-auto z-30" *ngIf="showPanel">
+      <ul class="list-reset my-1">
+        <li><a href="#" class="panel-button block">My account</a></li>
+        <li><a href="#" class="panel-button block">Notifications</a></li>
+        <li><hr class="border-t mx-2 border-gray-400"></li>
+        <li><a href="#" class="panel-button flex flex-row items-center justify-start" (mousedown)="logout()">
+          <fa-icon [icon]="faSignOut" class="mr-2 text-gray-600"></fa-icon>
+          <p>Logout</p>
+        </a></li>
+      </ul>
+    </div>
+    <button class="px-5 border-l button-header justify-center" (click)="openPanel($event)">
+      <fa-icon [icon]="faList" class="text-xl text-gray-600"></fa-icon>
+    </button>
+  </div>
+</header>

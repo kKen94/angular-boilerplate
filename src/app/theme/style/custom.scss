@@ -1,0 +1,271 @@
+@import "variables";
+@import "animations";
+@import "override";
+
+[hidden] {
+  display: none !important;
+}
+
+* {
+  @apply font-custom;
+
+  &:focus {
+    @apply outline-none #{!important};
+  }
+  &:disabled {
+    @apply opacity-50;
+    @apply cursor-not-allowed;
+  }
+}
+
+#toggle-menu {
+  @apply hidden;
+}
+
+.auth-box {
+  @apply rounded-md;
+  @apply p-10;
+  @apply border-none;
+  @apply shadow-2xl;
+  @apply bg-contain;
+  background-image: url('./assets/images/oth/login-background-2.svg');
+  background-size: 100%;
+  height: 700px;
+  width: 500px;
+}
+
+.panel-button {
+  @apply px-4;
+  @apply py-4;
+  @apply text-gray-800;
+  @apply no-underline;
+  @apply font-light;
+
+  &:hover {
+    @apply bg-gray-100;
+  }
+
+  &:focus {
+    @apply bg-gray-300;
+  }
+}
+
+.aside-vertical {
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.35);
+  @apply h-full;
+  @apply bg-bluegray-800;
+  z-index: 1;
+  @apply min-w-1/7;
+
+  &.folded {
+    @apply w-16;
+    @apply min-w-16;
+
+    &.hovered {
+      @apply absolute;
+      @apply top-0;
+      @apply left-0;
+      @apply overflow-x-hidden;
+      @apply overflow-y-hidden;
+      z-index: 1000;
+      @apply w-1/7;
+    }
+  }
+}
+
+.menu {
+  @apply flex;
+  @apply items-center;
+  @apply cursor-pointer;
+  @apply text-white;
+  @apply h-10;
+  @apply rounded-r-full;
+  @apply pr-3;
+  @apply pl-6;
+  @apply mr-4;
+
+  &:hover {
+    @apply bg-bluegray-900;
+  }
+
+  &.unpinned {
+    @apply rounded-full;
+    @apply pr-0;
+    @apply ml-3;
+    @apply mr-3;
+    @apply pl-3;
+  }
+
+  &.active {
+    @apply bg-lightblue-600;
+  }
+}
+
+.header {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  @apply h-16;
+  @apply bg-gray-100;
+  @apply sticky;
+  @apply top-0;
+}
+
+.button-header {
+  @apply h-full;
+  @apply flex;
+  @apply flex-row;
+  @apply items-center;
+  @apply cursor-pointer;
+  @apply border-gray-300;
+
+  &:hover {
+    @apply bg-gray-300;
+  }
+
+  &:active {
+    @apply bg-gray-400;
+  }
+
+  &.focus {
+    &:focus {
+      @apply bg-gray-400;
+    }
+  }
+}
+
+.full {
+  @apply w-full;
+  @apply h-full;
+}
+
+.disabled {
+  @apply opacity-50;
+  @apply cursor-not-allowed;
+}
+
+.quick-panel {
+  @apply h-full;
+  @apply absolute;
+  @apply top-0;
+  @apply right-0;
+  @apply w-1/6;
+  @apply bg-gray-100;
+  @apply overflow-x-hidden;
+  @apply overflow-y-hidden;
+  z-index: 1000;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.35);
+}
+
+.overlay {
+  @apply fixed;
+  @apply top-0;
+  @apply right-0;
+  z-index: 999;
+  opacity: 0.35;
+}
+
+/**********************************************************************************************************************************************************/
+
+/*********************************************************************** ELEMENTS *************************************************************************/
+
+/**********************************************************************************************************************************************************/
+
+
+/***************************************                       buttons                        *********************************************/
+
+@each $color in $colors {
+  .btn-#{$color} {
+    @apply px-4;
+    @apply py-2;
+    @apply border;
+    @apply border-gray-200;
+    @apply rounded;
+    @apply bg-transparent;
+    @apply text-#{$color}-500;
+    transition: 300ms;
+
+    &:active {
+      @apply bg-#{$color}-100;
+    }
+  }
+}
+
+/***************************************                       inputs                        *********************************************/
+
+.input {
+  @apply appearance-none;
+  @apply bg-transparent;
+  @apply border-b;
+  @apply border-gray-400;
+  @apply w-full;
+  @apply text-gray-700;
+  @apply mr-5;
+  @apply py-1;
+  @apply pr-2;
+  @apply transition;
+  @apply duration-300;
+  @apply ease-in-out;
+
+  &:focus {
+    @apply border-red-700;
+  }
+}
+
+.input-label {
+  @apply block;
+  @apply text-gray-700;
+  @apply font-light;
+  @apply mb-1;
+  @apply pr-4;
+  @apply mt-2;
+}
+
+/******* checkbox *********/
+
+.input-label-checkbox {
+  @apply block;
+  @apply mb-1;
+  @apply pr-4;
+  @apply mt-2;
+  @apply cursor-pointer;
+
+  & input {
+  }
+
+  & span {
+    @apply text-gray-700;
+    @apply font-light;
+    @apply text-sm;
+  }
+}
+
+.page-heading {
+  @apply bg-lightblue-600;
+  min-height: 13%;
+  @apply w-full;
+  @apply flex;
+  @apply flex-row;
+  @apply justify-between;
+  @apply items-center;
+  @apply text-white;
+  @apply text-2xl;
+}
+
+/************************************************************************************************************************************************************/
+
+/*********************************************************************** CONTAINERS *************************************************************************/
+
+/************************************************************************************************************************************************************/
+
+
+
+/******************************************************************************************************************************************************/
+
+/*********************************************************************** TYPO *************************************************************************/
+
+/******************************************************************************************************************************************************/
+
+.title {
+  @apply font-bold;
+  @apply text-2xl;
+  @apply text-gray-700;
+}

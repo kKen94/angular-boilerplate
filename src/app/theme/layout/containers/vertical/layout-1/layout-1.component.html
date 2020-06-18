@@ -1,0 +1,27 @@
+<div class="full flex">
+  <div class="full flex" [ngClass]="{'overlay': isPanelOpen}" (click)="closePanel()">
+    <app-navbar-vertical class="aside-vertical" [ngClass]="{'folded': !isMenuPin, 'hovered': !isMenuPin && isNavbarHover}" *ngIf="isMenuOpen" (mouseenter)="hoverInNavbar()" (mouseleave)="hoverOutNavbar()"></app-navbar-vertical>
+    <div class="flex-auto flex flex-col" [ngClass]="{'backdrop': isMenuOpen, 'pl-16': !isMenuPin && isNavbarHover}" (click)="closeMenu()">
+      <app-header class="header"></app-header>
+      <div class="page-heading" *ngIf="actualMenu">
+        <div class="flex flex-row px-6 xs:px-2">
+          <fa-icon class="font-bold" *ngIf="actualMenu" [icon]="actualMenu?.icon"></fa-icon>
+          <p class="ml-6 xs:ml-2">{{actualMenu?.displayedName}}</p>
+        </div>
+        <div class="bg-white flex flex-row rounded-full pl-4 py-1 pr-4 mr-6 xs:mr-2 shadow-md" [hidden]="!actualMenu.showSearch">
+          <fa-icon [icon]="faSearch" size="xs" class="text-gray-700"></fa-icon>
+          <form [formGroup]="searchForm" ngxsForm="layout.searchForm" class="ml-3">
+            <div class="w-full">
+              <label for="text-search" class="hidden"></label>
+              <input class="border-none rounded-full text-sm text-gray-700" formControlName="textField" id="text-search" type="text" placeholder="Search...">
+            </div>
+          </form>
+        </div>
+      </div>
+      <main class="flex-auto" style="height: calc(100% - 13% - 4rem)">
+        <app-content></app-content>
+      </main>
+    </div>
+  </div>
+  <app-quick-panel *ngIf="isPanelOpen" class="quick-panel"></app-quick-panel>
+</div>

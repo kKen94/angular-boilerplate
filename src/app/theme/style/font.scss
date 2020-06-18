@@ -1,0 +1,20 @@
+/*************************************************** VARIABLE FONTS *************************************************/
+
+/***************************************** deactivate this on older browser *****************************************/
+
+@font-face {
+  font-family: Montserrat;
+  src: url('src/assets/font/Montserrat-VF.ttf') format("truetype-variations");
+  font-weight: 1 999;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url('src/assets/font/Montserrat-Italic-VF.ttf') format("truetype-variations");
+  font-weight: 1 999;
+  font-style: italic;
+}
+
+/****************************************************** NORMALE FONTS *******************************************************/
+
+/***************************************** write every single weight and style font *****************************************/

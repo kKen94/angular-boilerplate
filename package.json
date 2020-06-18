@@ -1,0 +1,108 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "ng lint",
+    "test": "ng test",
+    "e2e": "ng e2e",
+    "start": "cross-env NODE_ENV=dev ng serve --open --port 4300",
+    "docker:start": "yarn run docker:build:dev && yarn run docker:run:dev",
+    "build:dev": "cross-env NODE_ENV=dev ng build",
+    "build:staging": "cross-env NODE_ENV=staging ng build -c=staging",
+    "build:prod": "cross-env NODE_ENV=prod ng build --prod",
+    "docker:run:dev": "docker run --name frontend-dev -d -p 4300:80 frontend-dev",
+    "docker:build:dev": "docker build --no-cache -t frontend-dev --build-arg APP_ENV=dev .",
+    "docker:build:staging": "docker build --no-cache -t frontend-dev --build-arg APP_ENV=staging .",
+    "docker:build:prod": "docker build --no-cache -t frontend-dev --build-arg APP_ENV=prod .",
+    "analyze:prod": "cross-env NODE_ENV=prod ng build --prod --stats-json && yarn run webpack-bundle-analyzer dist/frontend/stats-es2015.json",
+    "format:check": "prettier --list-different \"src/**/*.{ts,tsx}\"",
+    "format:write": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "pretty-quick --staged --pattern \"src/**/*.{ts,tsx}\"",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@angular/animations": "~9.1.11",
+    "@angular/cdk": "^9.2.4",
+    "@angular/common": "~9.1.11",
+    "@angular/compiler": "~9.1.11",
+    "@angular/core": "~9.1.11",
+    "@angular/forms": "~9.1.11",
+    "@angular/platform-browser": "~9.1.11",
+    "@angular/platform-browser-dynamic": "~9.1.11",
+    "@angular/router": "~9.1.11",
+    "@auth0/angular-jwt": "^4.0.0",
+    "@fortawesome/angular-fontawesome": "^0.6.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-regular-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@microsoft/signalr": "^3.1.5",
+    "@ngxs/form-plugin": "^3.6.2",
+    "@ngxs/logger-plugin": "^3.6.2",
+    "@ngxs/router-plugin": "^3.6.2",
+    "@ngxs/storage-plugin": "^3.6.2",
+    "@ngxs/store": "^3.6.2",
+    "autoprefixer": "^9.7.6",
+    "rxjs": "~6.5.4",
+    "sweetalert2": "^9.10.13",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^9.1.0",
+    "@angular-devkit/build-angular": "~0.901.8",
+    "@angular/cli": "~9.1.8",
+    "@angular/compiler-cli": "~9.1.11",
+    "@angular/language-service": "~9.1.11",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/prompt": "^8.3.5",
+    "@ngxs/devtools-plugin": "^3.6.2",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^5.1.2",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~3.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "lint-staged": "^10.2.2",
+    "postcss-custom-properties": "^9.1.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.2.1",
+    "postcss-scss": "^2.0.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "protractor": "~5.4.3",
+    "rxjs-tslint-rules": "^4.31.0",
+    "tailwindcss": "^1.4.4",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "~3.8.3",
+    "webpack-bundle-analyzer": "^3.7.0"
+  }
+}
