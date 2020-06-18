@@ -1,7 +1,7 @@
-$color1: #C8DAE6;
-$color2: white;
-$color3: #B8B8B8;
-$color4: #FFCD41;
+$color1: #c8dae6;
+$color2: #fff;
+$color3: #b8b8b8;
+$color4: #ffcd41;
 $color5: #2092A9;
 
 .weather-wrapper {
@@ -13,7 +13,6 @@ $color5: #2092A9;
 }
 
 .weather-card {
-
   margin:  20px 5px;
   border-radius: 20px;
   position: relative;
@@ -21,13 +20,13 @@ $color5: #2092A9;
   width: 270px;
   height: 270px;
   background-color: $color2;
-  box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
+  box-shadow: 0 0 25px 1px rgba(50, 50, 50, 0.1);
   animation: appear 500ms ease-out forwards;
 
   h1 {
     position: absolute;
     font-family: 'Lato', sans-serif;
-    font-weight:300;
+    font-weight: 300;
     font-size:80px;
     color: $color3;
     bottom: 0;
@@ -40,8 +39,8 @@ $color5: #2092A9;
   p {
     position: absolute;
     font-family: 'Lato', sans-serif;
-    font-weight:300;
-    font-size:28px;
+    font-weight: 300;
+    font-size: 28px;
     color: lighten($color3, 10%);
     bottom: 0;
     left: 35px;
@@ -62,21 +61,21 @@ $color5: #2092A9;
 .sun {
   background: $color4;
   border-radius: 50%;
-  box-shadow: rgba(255,255,0,0.1) 0 0 0 4px;
+  box-shadow: rgba(255, 255, 0, 0.1) 0 0 0 4px;
   animation: light 800ms ease-in-out infinite alternate, weather-icon-move 5s ease-in-out infinite;
 }
 
 @keyframes light {
   from {
-    box-shadow: rgba(255,255,0,0.2) 0 0 0 10px;
+    box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 10px;
   }
   to {
-    box-shadow: rgba(255,255,0,0.2) 0 0 0 17px;
+    box-shadow: rgba(255, 255, 0, 0.2) 0 0 0 17px;
   }
 }
 
 .cloud {
-  margin-right:60px;
+  margin-right: 60px;
   background: darken($color1, 5%);
   border-radius: 20px;
   width: 25px;
@@ -88,8 +87,7 @@ $color5: #2092A9;
     darken($color1, 5%) 11px -8px 0 -3px,
     darken($color1, 5%) 25px 11px 0 -1px;
 
-
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     border-radius: 10px;
@@ -99,7 +97,6 @@ $color5: #2092A9;
     left: 0;
     top: 31px;
     transform: rotate(30deg);
-
     animation: rain 800ms ease-in-out infinite alternate;
   }
 }
@@ -107,14 +104,14 @@ $color5: #2092A9;
 @keyframes rain {
   from {
     box-shadow:
-      $color5 8px 0px,
+      $color5 8px 0,
       $color5 32px -6px,
       $color5 20px 0px;
   }
   to {
     box-shadow:
       $color5 8px 6px,
-      $color5 32px 0px,
+      $color5 32px 0,
       $color5 20px 6px;
   }
 }
@@ -129,30 +126,32 @@ $color5: #2092A9;
   margin-top: 80px;
   color: darken($color1, 25%);
   font-family: 'Lato', sans-serif;
-  font-weight:300;
-  font-size:24px;
+  font-weight: 300;
+  font-size: 24px;
   text-align: center;
-
 
   a {
     color: #FF8F8F;
-    font-weight:400;
+    font-weight: 400;
     animation: all 300ms ease-in-out;
   }
 }
 
 @keyframes appear {
   0% {
-    transform:scale(0);
+    transform: scale(0);
   }
+
   50% {
-    transform:scale(1.05)
+    transform: scale(1.05);
   }
+
   75% {
-    transform:scale(0.95)
+    transform: scale(0.95);
   }
+
   100% {
-    transform:scale(1)
+    transform: scale(1);
   }
 }
 

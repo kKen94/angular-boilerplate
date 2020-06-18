@@ -5,7 +5,6 @@
 @import "app/theme/style/custom";
 @import "app/theme/style/modal";
 @import "app/theme/style/popover";
-
 @import "app/theme/style/media-query/xl";
 @import "app/theme/style/media-query/lg";
 @import "app/theme/style/media-query/md";
@@ -13,6 +12,6 @@
 @import "app/theme/style/media-query/xs";
 
 :root {
-  --color-primary: #cc0000;
+  --color-primary: #c00;
   --color-secondary: #c0c0c0;
 }
