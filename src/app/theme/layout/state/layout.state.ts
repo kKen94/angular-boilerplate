@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { FormState } from '@model';
 import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
 import { MENU } from '../components/navbar/menu/menu';
+import { SearchForm } from '../models/layout';
 import HoverInNavbar = Navbar.HoverIn;
 import HoverOutNavbar = Navbar.HoverOut;
 import OpenPanel = QuickPanel.Open;
@@ -10,8 +12,6 @@ import CloseMenu = Menu.Close;
 import TogglePin = Menu.TogglePin;
 import { Menu as MenuModel } from '../models/menu';
 import { Menu, Navbar, QuickPanel, SetMenu } from './layout.action';
-import { SearchForm } from '../models/layout';
-import { FormState } from '@model';
 
 /******************************** STATE MODEL ********************************/
 

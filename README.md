@@ -3,9 +3,9 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![license](https://img.shields.io/github/license/kKen94/ngx-progress)](http://opensource.org/licenses/MIT)
 
-Questo progetto si prefigge di essere un boilerplate plug&play di Angular2+.
+This project aims to be a plug & play boilerplate of Angular 9
 
-Alcuni strumenti di sviluppo sono preimpostati, quali:
+Some development tools are preset, such as
     
     • docker
     • webpack-bundle-analyzer: visualize size of output bundled files
@@ -15,6 +15,6 @@ Alcuni strumenti di sviluppo sono preimpostati, quali:
     • commit-lint: checks if commit messages meet the conventional commit format
     • tslint: add external and custom rules
     
-Per il css viene usato il framework css **Tailwind**, per una maggiore facilità di utilizzo e una maggiore personalizzazione.
+**Tailwind**: A utility-first CSS framework for rapidly building custom designs.
 
-Il progetto è gestito a stati grazie a **NGXS** per una programmazione reattiva.
+**NGXS**: state management pattern
