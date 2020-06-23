@@ -7,7 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    // canActivate: [AuthGuard, ApplicationAccessGuard],
     children: [
       {
         path: 'dashboard',
@@ -17,6 +16,13 @@ const routes: Routes = [
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
+      },
+      {
+        path: 'calendar',
+        loadChildren: () =>
+          import('src/app/modules/pages/lazy/calendar/calendar.module').then(
+            m => m.CalendarModule,
+          ),
       },
     ],
   },

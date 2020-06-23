@@ -78,5 +78,6 @@ export class LayoutFacade {
 
   goToLink(routerLink: string): void {
     this.store.dispatch(new Navigate([routerLink]));
+    resetForm(this.store, 'layout.searchForm');
   }
 }
