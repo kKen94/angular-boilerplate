@@ -101,5 +101,6 @@ export class SweetHelper {
     if (duration === SweetAlertDuration.Long) {
       return 5000;
     }
+    return 2000;
   }
 }
