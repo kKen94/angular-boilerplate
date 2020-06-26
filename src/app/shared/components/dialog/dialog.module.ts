@@ -1,7 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { NgModule } from '@angular/core';
-import { Dialog, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER } from './dialog';
+import { Dialog, DIALOG_SCROLL_STRATEGY_PROVIDER } from './dialog';
 import { DialogContainerComponent } from './dialog-container.component';
 import {
   DialogActionsDirective,
@@ -26,7 +26,7 @@ import {
     DialogActionsDirective,
     DialogContentDirective,
   ],
-  providers: [Dialog, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER],
+  providers: [Dialog, DIALOG_SCROLL_STRATEGY_PROVIDER],
   entryComponents: [DialogContainerComponent],
 })
 export class DialogModule {}

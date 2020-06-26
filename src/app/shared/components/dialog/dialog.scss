@@ -1,14 +1,14 @@
 @import '~@angular/cdk/a11y/a11y';
 
-$ce-dialog-padding: 24px !default;
-$ce-dialog-border-radius: 4px !default;
-$ce-dialog-max-height: 65vh !default;
-$ce-dialog-button-margin: 8px !default;
+$app-dialog-padding: 24px !default;
+$app-dialog-border-radius: 4px !default;
+$app-dialog-max-height: 65vh !default;
+$app-dialog-button-margin: 8px !default;
 
-.ce-dialog-container {
+.app-dialog-container {
   display: block;
-  padding: $ce-dialog-padding;
-  border-radius: $ce-dialog-border-radius;
+  padding: $app-dialog-padding;
+  border-radius: $app-dialog-border-radius;
   box-sizing: border-box;
   overflow: auto;
   outline: 0;
@@ -31,21 +31,21 @@ $ce-dialog-button-margin: 8px !default;
   color: rgba(0, 0, 0, 0.87);
 }
 
-.ce-dialog-content {
+.app-dialog-content {
   display: block;
-  margin: 0 $ce-dialog-padding * -1;
-  padding: 0 $ce-dialog-padding;
-  max-height: $ce-dialog-max-height;
+  margin: 0 $app-dialog-padding * -1;
+  padding: 0 $app-dialog-padding;
+  max-height: $app-dialog-max-height;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.ce-dialog-title {
+.app-dialog-title {
   margin: 0 0 20px;
   display: block;
 }
 
-.ce-dialog-actions {
+.app-dialog-actions {
   padding: 8px 0;
   display: flex;
   flex-wrap: wrap;
@@ -53,7 +53,7 @@ $ce-dialog-button-margin: 8px !default;
   align-items: center;
 
   // Pull the actions down to avoid their padding stacking with the dialog's padding.
-  margin-bottom: -$ce-dialog-padding;
+  margin-bottom: -$app-dialog-padding;
 
   &[align='end'] {
     justify-content: flex-end;
@@ -65,11 +65,11 @@ $ce-dialog-button-margin: 8px !default;
 
   .ce-button-base + .ce-button-base,
   .ce-mdc-button-base + .ce-mdc-button-base {
-    margin-left: $ce-dialog-button-margin;
+    margin-left: $app-dialog-button-margin;
 
     [dir='rtl'] & {
       margin-left: 0;
-      margin-right: $ce-dialog-button-margin;
+      margin-right: $app-dialog-button-margin;
     }
   }
 }

@@ -21,15 +21,15 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import { ceDialogAnimations } from './dialog-animations';
-import { MatDialogConfig } from './dialog-config';
+import { appDialogAnimations } from './dialog-animations';
+import { DialogConfig } from './dialog-config';
 
 /**
  * Throws an exception for the case when a ComponentPortal is
  * attached to a DomPortalOutlet without an origin.
  * @docs-private
  */
-export function throwMatDialogContentAlreadyAttachedError() {
+export function throwDialogContentAlreadyAttachedError() {
   throw Error(
     'Attempting to attach dialog content after content is already attached',
   );
@@ -41,16 +41,16 @@ export function throwMatDialogContentAlreadyAttachedError() {
  * @docs-private
  */
 @Component({
-  selector: 'ce-dialog-container',
+  selector: 'app-dialog-container',
   templateUrl: 'dialog-container.component.html',
   styleUrls: ['dialog.scss'],
   encapsulation: ViewEncapsulation.None,
   // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.
   // tslint:disable-next-line:validate-decorators
   changeDetection: ChangeDetectionStrategy.Default,
-  animations: [ceDialogAnimations.dialogContainer],
+  animations: [appDialogAnimations.dialogContainer],
   host: {
-    class: 'ce-dialog-container',
+    class: 'app-dialog-container',
     tabindex: '-1',
     'aria-modal': 'true',
     '[attr.id]': '_id',
@@ -93,7 +93,7 @@ export class DialogContainerComponent extends BasePortalOutlet {
     private _changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(DOCUMENT) _document: any,
     /** The dialog configuration. */
-    public _config: MatDialogConfig,
+    public _config: DialogConfig,
   ) {
     super();
     this._ariaLabelledBy = _config.ariaLabelledBy || null;
@@ -106,7 +106,7 @@ export class DialogContainerComponent extends BasePortalOutlet {
    */
   attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {
     if (this._portalOutlet.hasAttached()) {
-      throwMatDialogContentAlreadyAttachedError();
+      throwDialogContentAlreadyAttachedError();
     }
 
     this._setupFocusTrap();
@@ -119,7 +119,7 @@ export class DialogContainerComponent extends BasePortalOutlet {
    */
   attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {
     if (this._portalOutlet.hasAttached()) {
-      throwMatDialogContentAlreadyAttachedError();
+      throwDialogContentAlreadyAttachedError();
     }
 
     this._setupFocusTrap();
@@ -134,7 +134,7 @@ export class DialogContainerComponent extends BasePortalOutlet {
    */
   attachDomPortal = (portal: DomPortal) => {
     if (this._portalOutlet.hasAttached()) {
-      throwMatDialogContentAlreadyAttachedError();
+      throwDialogContentAlreadyAttachedError();
     }
 
     this._setupFocusTrap();

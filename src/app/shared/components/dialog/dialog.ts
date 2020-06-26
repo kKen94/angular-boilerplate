@@ -25,42 +25,42 @@ import {
 } from '@angular/core';
 import { defer, Observable, of as observableOf, Subject } from 'rxjs';
 import { startWith } from 'rxjs/operators';
-import { MatDialogConfig } from './dialog-config';
+import { DialogConfig } from './dialog-config';
 import { DialogContainerComponent } from './dialog-container.component';
 import { DialogRef } from './dialog-ref';
 
 /** Injection token that can be used to access the data that was passed in to a dialog. */
-export const MAT_DIALOG_DATA = new InjectionToken<any>('MatDialogData');
+export const DIALOG_DATA = new InjectionToken<any>('DialogData');
 
 /** Injection token that can be used to specify default dialog options. */
-export const MAT_DIALOG_DEFAULT_OPTIONS = new InjectionToken<MatDialogConfig>(
-  'ce-dialog-default-options',
+export const DIALOG_DEFAULT_OPTIONS = new InjectionToken<DialogConfig>(
+  'app-dialog-default-options',
 );
 
 /** Injection token that determines the scroll handling while the dialog is open. */
-export const MAT_DIALOG_SCROLL_STRATEGY = new InjectionToken<
-  () => ScrollStrategy
->('ce-dialog-scroll-strategy');
+export const DIALOG_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>(
+  'app-dialog-scroll-strategy',
+);
 
 /** @docs-private */
-export function MAT_DIALOG_SCROLL_STRATEGY_FACTORY(
+export function DIALOG_SCROLL_STRATEGY_FACTORY(
   overlay: Overlay,
 ): () => ScrollStrategy {
   return () => overlay.scrollStrategies.block();
 }
 
 /** @docs-private */
-export function MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
+export function DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(
   overlay: Overlay,
 ): () => ScrollStrategy {
   return () => overlay.scrollStrategies.block();
 }
 
 /** @docs-private */
-export const MAT_DIALOG_SCROLL_STRATEGY_PROVIDER = {
-  provide: MAT_DIALOG_SCROLL_STRATEGY,
+export const DIALOG_SCROLL_STRATEGY_PROVIDER = {
+  provide: DIALOG_SCROLL_STRATEGY,
   deps: [Overlay],
-  useFactory: MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,
+  useFactory: DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,
 };
 
 /**
@@ -113,9 +113,9 @@ export class Dialog implements OnDestroy {
      */
     @Optional() _location: Location,
     @Optional()
-    @Inject(MAT_DIALOG_DEFAULT_OPTIONS)
-    private _defaultOptions: MatDialogConfig,
-    @Inject(MAT_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
+    @Inject(DIALOG_DEFAULT_OPTIONS)
+    private _defaultOptions: DialogConfig,
+    @Inject(DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
     @Optional() @SkipSelf() private _parentDialog: Dialog,
     private _overlayContainer: OverlayContainer,
   ) {
@@ -131,11 +131,11 @@ export class Dialog implements OnDestroy {
    */
   open<T, D = any, R = any>(
     componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-    config?: MatDialogConfig<D>,
+    config?: DialogConfig<D>,
   ): DialogRef<T, R> {
     config = _applyConfigDefaults(
       config,
-      this._defaultOptions || new MatDialogConfig(),
+      this._defaultOptions || new DialogConfig(),
     );
 
     if (config.id && this.getDialogById(config.id)) {
@@ -193,7 +193,7 @@ export class Dialog implements OnDestroy {
    * @param config The dialog configuration.
    * @returns A promise resolving to the OverlayRef for the created overlay.
    */
-  private _createOverlay(config: MatDialogConfig): OverlayRef {
+  private _createOverlay(config: DialogConfig): OverlayRef {
     const overlayConfig = this._getOverlayConfig(config);
     return this._overlay.create(overlayConfig);
   }
@@ -203,7 +203,7 @@ export class Dialog implements OnDestroy {
    * @param dialogConfig The dialog configuration.
    * @returns The overlay configuration.
    */
-  private _getOverlayConfig(dialogConfig: MatDialogConfig): OverlayConfig {
+  private _getOverlayConfig(dialogConfig: DialogConfig): OverlayConfig {
     const state = new OverlayConfig({
       positionStrategy: this._overlay.position().global(),
       scrollStrategy: dialogConfig.scrollStrategy || this._scrollStrategy(),
@@ -232,13 +232,13 @@ export class Dialog implements OnDestroy {
    */
   private _attachDialogContainer(
     overlay: OverlayRef,
-    config: MatDialogConfig,
+    config: DialogConfig,
   ): DialogContainerComponent {
     const userInjector =
       config && config.viewContainerRef && config.viewContainerRef.injector;
     const injector = Injector.create({
       parent: userInjector || this._injector,
-      providers: [{ provide: MatDialogConfig, useValue: config }],
+      providers: [{ provide: DialogConfig, useValue: config }],
     });
 
     const containerPortal = new ComponentPortal(
@@ -267,7 +267,7 @@ export class Dialog implements OnDestroy {
     componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
     dialogContainer: DialogContainerComponent,
     overlayRef: OverlayRef,
-    config: MatDialogConfig,
+    config: DialogConfig,
   ): DialogRef<T, R> {
     // Create a reference to the dialog we're creating in order to give the user a handle
     // to modify and close it.
@@ -316,7 +316,7 @@ export class Dialog implements OnDestroy {
    * @returns The custom injector that can be used inside the dialog.
    */
   private _createInjector<T>(
-    config: MatDialogConfig,
+    config: DialogConfig,
     dialogRef: DialogRef<T>,
     dialogContainer: DialogContainerComponent,
   ): Injector {
@@ -329,7 +329,7 @@ export class Dialog implements OnDestroy {
     // added to the injection tokens.
     const providers: StaticProvider[] = [
       { provide: DialogContainerComponent, useValue: dialogContainer },
-      { provide: MAT_DIALOG_DATA, useValue: config.data },
+      { provide: DIALOG_DATA, useValue: config.data },
       { provide: DialogRef, useValue: dialogRef },
     ];
 
@@ -427,8 +427,8 @@ export class Dialog implements OnDestroy {
  * @returns The new configuration object.
  */
 function _applyConfigDefaults(
-  config?: MatDialogConfig,
-  defaultOptions?: MatDialogConfig,
-): MatDialogConfig {
+  config?: DialogConfig,
+  defaultOptions?: DialogConfig,
+): DialogConfig {
   return { ...defaultOptions, ...config };
 }

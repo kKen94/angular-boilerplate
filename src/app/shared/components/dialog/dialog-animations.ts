@@ -11,7 +11,7 @@ import {
  * Animations used by Dialog.
  * @docs-private
  */
-export const ceDialogAnimations: {
+export const appDialogAnimations: {
   readonly dialogContainer: AnimationTriggerMetadata;
 } = {
   /** Animation that is applied on the dialog container by defalt. */

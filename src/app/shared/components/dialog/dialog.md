@@ -1,10 +1,10 @@
-The `MatDialog` service can be used to open modal dialogs with Material Design styling and
+The `Dialog` service can be used to open modal dialogs with Material Design styling and
 animations.
 
 <!-- example(dialog-overview) -->
 
 A dialog is opened by calling the `open` method with a component to be loaded and an optional
-config object. The `open` method will return an instance of `MatDialogRef`:
+config object. The `open` method will return an instance of `DialogRef`:
 
 ```ts
 let dialogRef = dialog.open(UserProfileComponent, {
@@ -13,7 +13,7 @@ let dialogRef = dialog.open(UserProfileComponent, {
 });
 ```
 
-The `MatDialogRef` provides a handle on the opened dialog. It can be used to close the dialog and to
+The `DialogRef` provides a handle on the opened dialog. It can be used to close the dialog and to
 receive notification when the dialog has been closed.
 
 ```ts
@@ -24,14 +24,14 @@ dialogRef.afterClosed().subscribe(result => {
 dialogRef.close('Pizza!');
 ```
 
-Components created via `MatDialog` can _inject_ `MatDialogRef` and use it to close the dialog
+Components created via `Dialog` can _inject_ `DialogRef` and use it to close the dialog
 in which they are contained. When closing, an optional result value can be provided. This result
 value is forwarded as the result of the `afterClosed` promise.
 
 ```ts
 @Component({/* ... */})
 export class YourDialog {
-  constructor(public dialogRef: MatDialogRef<YourDialog>) { }
+  constructor(public dialogRef: DialogRef<YourDialog>) { }
 
   closeDialog() {
     this.dialogRef.close('Pizza!');
@@ -41,7 +41,7 @@ export class YourDialog {
 
 ### Configuring dialog content via `entryComponents`
 
-Because `MatDialog` instantiates components at run-time, the Angular compiler needs extra
+Because `Dialog` instantiates components at run-time, the Angular compiler needs extra
 information to create the necessary `ComponentFactory` for your dialog content component.
 
 For any component loaded into a dialog, you must include your component class in the list of
@@ -52,7 +52,7 @@ the `ComponentFactory` for it.
 @NgModule({
   imports: [
     // ...
-    MatDialogModule
+    DialogModule
   ],
 
   declarations: [
@@ -71,13 +71,13 @@ export class AppModule {}
 ```
 
 ### Specifying global configuration defaults
-Default dialog options can be specified by providing an instance of `MatDialogConfig` for
-MAT_DIALOG_DEFAULT_OPTIONS in your application's root module.
+Default dialog options can be specified by providing an instance of `DialogConfig` for
+DIALOG_DEFAULT_OPTIONS in your application's root module.
 
 ```ts
 @NgModule({
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ]
 })
 ```
@@ -92,18 +92,18 @@ let dialogRef = dialog.open(YourDialog, {
 });
 ```
 
-To access the data in your dialog component, you have to use the MAT_DIALOG_DATA injection token:
+To access the data in your dialog component, you have to use the DIALOG_DATA injection token:
 
 ```ts
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'your-dialog',
   template: 'passed in {{ data.name }}',
 })
 export class YourDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(DIALOG_DATA) public data: any) { }
 }
 ```
 
@@ -123,20 +123,20 @@ Several directives are available to make it easier to structure your dialog cont
 
 | Name                   | Description                                                                                                   |
 |------------------------|---------------------------------------------------------------------------------------------------------------|
-| `ce-dialog-title`     | \[Attr] Dialog title, applied to a heading element (e.g., `<h1>`, `<h2>`)                                     |
-| `<ce-dialog-content>` | Primary scrollable content of the dialog.                                                                     |
-| `<ce-dialog-actions>` | Container for action buttons at the bottom of the dialog. Button alignment can be controlled via the `align` attribute which can be set to `end` and `center`.                                                      |
-| `ce-dialog-close`     | \[Attr] Added to a `<button>`, makes the button close the dialog with an optional result from the bound value.|
+| `app-dialog-title`     | \[Attr] Dialog title, applied to a heading element (e.g., `<h1>`, `<h2>`)                                     |
+| `<app-dialog-content>` | Primary scrollable content of the dialog.                                                                     |
+| `<app-dialog-actions>` | Container for action buttons at the bottom of the dialog. Button alignment can be controlled via the `align` attribute which can be set to `end` and `center`.                                                      |
+| `app-dialog-close`     | \[Attr] Added to a `<button>`, makes the button close the dialog with an optional result from the bound value.|
 
 For example:
 ```html
-<h2 ce-dialog-title>Delete all elements?</h2>
-<ce-dialog-content>This will delete all elements that are currently on this page and cannot be undone.</ce-dialog-content>
-<ce-dialog-actions>
-  <button mat-button ce-dialog-close>Cancel</button>
-  <!-- The ce-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button mat-button [ce-dialog-close]="true">Delete</button>
-</ce-dialog-actions>
+<h2 app-dialog-title>Delete all elements?</h2>
+<app-dialog-content>This will delete all elements that are currently on this page and cannot be undone.</app-dialog-content>
+<app-dialog-actions>
+  <button mat-button app-dialog-close>Cancel</button>
+  <!-- The app-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [app-dialog-close]="true">Delete</button>
+</app-dialog-actions>
 ```
 
 Once a dialog opens, the dialog will automatically focus the first tabbable element.
@@ -151,10 +151,10 @@ You can control which elements are tab stops with the `tabindex` attribute
 
 ### Accessibility
 By default, each dialog has `role="dialog"` on the root element. The role can be changed to
-`alertdialog` via the `MatDialogConfig` when opening.
+`alertdialog` via the `DialogConfig` when opening.
 
 The `aria-label`, `aria-labelledby`, and `aria-describedby` attributes can all be set to the
-dialog element via the `MatDialogConfig` as well. Each dialog should typically have a label
+dialog element via the `DialogConfig` as well. Each dialog should typically have a label
 set via `aria-label` or `aria-labelledby`.
 
 When a dialog is opened, it will move focus to the first focusable element that it can find. In

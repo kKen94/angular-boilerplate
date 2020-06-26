@@ -23,7 +23,7 @@ export interface DialogPosition {
 /**
  * Configuration for opening a modal dialog with the Dialog service.
  */
-export class MatDialogConfig<D = any> {
+export class DialogConfig<D = any> {
   /**
    * Where the attached component should live in Angular's *logical* component tree.
    * This affects what is available for injection and the change detection order for the

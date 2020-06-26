@@ -57,7 +57,7 @@ export class DialogRef<T, R = any> {
   constructor(
     private _overlayRef: OverlayRef,
     public _containerInstance: DialogContainerComponent,
-    readonly id: string = `ce-dialog-${uniqueId++}`,
+    readonly id: string = `app-dialog-${uniqueId++}`,
   ) {
     // Pass the id along to the container.
     _containerInstance._id = id;

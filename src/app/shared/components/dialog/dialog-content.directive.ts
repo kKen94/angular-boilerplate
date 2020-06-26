@@ -17,8 +17,8 @@ let dialogElementUid = 0;
  * Button that will close the current dialog.
  */
 @Directive({
-  selector: '[ce-dialog-close], [ceDialogClose]',
-  exportAs: 'ceDialogClose',
+  selector: '[app-dialog-close], [appDialogClose]',
+  exportAs: 'appDialogClose',
   host: {
     '(click)': 'dialogRef.close(dialogResult)',
     '[attr.aria-label]': 'ariaLabel || null',
@@ -33,9 +33,9 @@ export class DialogCloseDirective implements OnInit, OnChanges {
   @Input() type: 'submit' | 'button' | 'reset' = 'button';
 
   /** Dialog close input. */
-  @Input('ce-dialog-close') dialogResult: any;
+  @Input('app-dialog-close') dialogResult: any;
 
-  @Input('ceDialogClose') _ceDialogClose: any;
+  @Input('appDialogClose') _appDialogClose: any;
 
   constructor(
     @Optional() public dialogRef: DialogRef<any>,
@@ -59,7 +59,7 @@ export class DialogCloseDirective implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const proxiedChange =
-      changes['_ceDialogClose'] || changes['_ceDialogCloseResult'];
+      changes['_appDialogClose'] || changes['_appDialogCloseResult'];
 
     if (proxiedChange) {
       this.dialogResult = proxiedChange.currentValue;
@@ -71,15 +71,15 @@ export class DialogCloseDirective implements OnInit, OnChanges {
  * Title of a dialog element. Stays fixed to the top of the dialog when scrolling.
  */
 @Directive({
-  selector: '[ce-dialog-title], [ceDialogTitle]',
-  exportAs: 'ceDialogTitle',
+  selector: '[app-dialog-title], [appDialogTitle]',
+  exportAs: 'appDialogTitle',
   host: {
-    class: 'ce-dialog-title',
+    class: 'app-dialog-title',
     '[id]': 'id',
   },
 })
 export class DialogTitleDirective implements OnInit {
-  @Input() id = `ce-dialog-title-${dialogElementUid++}`;
+  @Input() id = `app-dialog-title-${dialogElementUid++}`;
 
   constructor(
     @Optional() private _dialogRef: DialogRef<any>,
@@ -111,8 +111,8 @@ export class DialogTitleDirective implements OnInit {
  * Scrollable content container of a dialog.
  */
 @Directive({
-  selector: `[ce-dialog-content], ce-dialog-content, [ceDialogContent]`,
-  host: { class: 'ce-dialog-content' },
+  selector: `[app-dialog-content], app-dialog-content, [appDialogContent]`,
+  host: { class: 'app-dialog-content' },
 })
 export class DialogContentDirective {}
 
@@ -121,8 +121,8 @@ export class DialogContentDirective {}
  * Stays fixed to the bottom when scrolling.
  */
 @Directive({
-  selector: `[ce-dialog-actions], ce-dialog-actions, [ceDialogActions]`,
-  host: { class: 'ce-dialog-actions' },
+  selector: `[app-dialog-actions], app-dialog-actions, [appDialogActions]`,
+  host: { class: 'app-dialog-actions' },
 })
 export class DialogActionsDirective {}
 
@@ -137,7 +137,7 @@ function getClosestDialog(
 ) {
   let parent: HTMLElement | null = element.nativeElement.parentElement;
 
-  while (parent && !parent.classList.contains('ce-dialog-container')) {
+  while (parent && !parent.classList.contains('app-dialog-container')) {
     parent = parent.parentElement;
   }
 
