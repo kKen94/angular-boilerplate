@@ -43,6 +43,7 @@ interface PopoverConfig {
   lockAlignment: boolean;
 }
 
+// TODO: Add Angular decorator.
 @Injectable()
 export class PopoverAnchoringService implements OnDestroy {
   /** Emits when the popover is opened. */
