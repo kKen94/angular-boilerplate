@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ChangePasswordDto, LoginDto, SignUpDto } from '../models';
 import { ConfigService } from '../../../core/services/config.service';
+import { ChangePasswordDto, LoginDto, SignUpDto } from '../models';
 
 @Injectable()
 export class AuthApi {
@@ -10,7 +10,7 @@ export class AuthApi {
 
   login(loginValue: LoginDto): Observable<any> {
     return this.http.post<any>(
-      `${ConfigService.settings.apiUrl}/v1/users/auth/sign-in`,
+      `${ConfigService.settings.apiUrl}/users/auth/login`,
       loginValue,
     );
   }

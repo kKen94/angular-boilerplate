@@ -26,16 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
 
         const errs = err.error;
-        if (errs && errs.length > 0) {
-          for (const er of errs) {
-            SweetHelper.fireToast(er.description, 'error');
-          }
-        } else if (errs && errs.developerMeesage) {
-          SweetHelper.fireToast(errs.developerMeesage.Message, 'error');
-        } else {
-          const error = err.message || err.statusText;
-          SweetHelper.fireToast(error, 'error');
-        }
+        SweetHelper.fireToast(errs.message, 'error');
         throw new Error(err.error);
       }),
     );
