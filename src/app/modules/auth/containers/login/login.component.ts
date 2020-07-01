@@ -12,7 +12,7 @@ export class LoginComponent {
 
   constructor(private authFacade: AuthFacade, private fb: FormBuilder) {
     this.loginForm = fb.group({
-      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
     this.authFacade.isLoginValid$.subscribe(
