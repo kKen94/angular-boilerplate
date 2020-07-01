@@ -1,6 +1,7 @@
-<aside class="h-full">
+<aside class="h-full flex flex-col justify-between items-center">
   <div class="h-16 flex flex-row justify-end items-center mx-6">
     <fa-icon [icon]="faThumbtack" size="1x" [ngClass]="{'text-gray-200': !isMenuPin, 'text-blue-400': isMenuPin, 'hidden': !isMenuPin && !isNavbarHover}" class="transform rotate-45 cursor-pointer w-4 md:hidden" (click)="togglePin()"></fa-icon>
   </div>
-  <app-menu></app-menu>
+  <app-menu class="w-full pl-8"></app-menu>
+  <div></div>
 </aside>

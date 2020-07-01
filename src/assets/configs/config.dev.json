@@ -1,5 +1,5 @@
 {
-  "apiUrl": "https://localhost:5001/api",
+  "apiUrl": "https://localhost:5443",
   "pageSizes": [5, 10, 20, 50],
   "pageSize": 10
 }

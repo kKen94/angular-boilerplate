@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'custom': ['Montserrat', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'custom': ['Jost', 'Muli', 'Arial', 'sans-serif'],
       },
       fontSize: {
         '2xs': '.625rem',
@@ -29,6 +29,7 @@ module.exports = {
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
+        tertiary: 'var(--color-tertiary)',
         blue: {
           '100': '#bbdefb',
           '200': '#90caf9',
@@ -52,7 +53,7 @@ module.exports = {
           '900': '#01579b',
         },
         gray: {
-          '100': '#f5f5f5',
+          '100': '#f8f7fc',
           '200': '#eeeeee',
           '300': '#e0e0e0',
           '400': '#bdbdbd',

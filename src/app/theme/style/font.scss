@@ -3,14 +3,27 @@
 /***************************************** deactivate this on older browser *****************************************/
 
 @font-face {
-  font-family: Montserrat;
-  src: url('src/assets/font/Montserrat-VF.ttf') format("truetype-variations");
+  font-family: Muli;
+  src: url('src/assets/font/Muli-VF.ttf') format("truetype-variations");
   font-weight: 1 999;
 }
 
 @font-face {
-  font-family: Montserrat;
-  src: url('src/assets/font/Montserrat-Italic-VF.ttf') format("truetype-variations");
+  font-family: Muli;
+  src: url('src/assets/font/Muli-Italic-VF.ttf') format("truetype-variations");
+  font-weight: 1 999;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Jost;
+  src: url('src/assets/font/Jost-VF.ttf') format("truetype-variations");
+  font-weight: 1 999;
+}
+
+@font-face {
+  font-family: Jost;
+  src: url('src/assets/font/Jost-Italic-VF.ttf') format("truetype-variations");
   font-weight: 1 999;
   font-style: italic;
 }
