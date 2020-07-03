@@ -9,7 +9,7 @@ import { AuthFacade } from '../../auth.facade.service';
 })
 export class ResetPasswordComponent {
   resetPasswordForm: FormGroup;
-  isFormValid: boolean;
+  isFormValid!: boolean;
 
   constructor(private authFacade: AuthFacade, private fb: FormBuilder) {
     this.resetPasswordForm = fb.group({

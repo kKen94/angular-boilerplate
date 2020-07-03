@@ -23,13 +23,13 @@ import { resetForm } from '@utility';
 
 @Injectable()
 export class LayoutFacade {
-  @Select(LayoutState.hoverNavbar) isNavbarHover$: Observable<boolean>;
-  @Select(LayoutState.openPanel) isPanelOpen$: Observable<boolean>;
-  @Select(LayoutState.openMenu) isMenuOpen$: Observable<boolean>;
-  @Select(LayoutState.pinMenu) isMenuPin$: Observable<boolean>;
-  @Select(LayoutState.actualMenu) menu$: Observable<MenuModel>;
-  @Select(AuthState.username) username$: Observable<string>;
-  @Select(LayoutState.textSearch) search$: Observable<string>;
+  @Select(LayoutState.hoverNavbar) isNavbarHover$!: Observable<boolean>;
+  @Select(LayoutState.openPanel) isPanelOpen$!: Observable<boolean>;
+  @Select(LayoutState.openMenu) isMenuOpen$!: Observable<boolean>;
+  @Select(LayoutState.pinMenu) isMenuPin$!: Observable<boolean>;
+  @Select(LayoutState.actualMenu) menu$!: Observable<MenuModel>;
+  @Select(AuthState.username) username$!: Observable<string>;
+  @Select(LayoutState.textSearch) search$!: Observable<string>;
 
   constructor(
     private store: Store,
@@ -43,7 +43,7 @@ export class LayoutFacade {
       );
     this.actions$.pipe(ofActionSuccessful(RouterDataResolved)).subscribe(() => {
       const activeUrl = this.store.selectSnapshot(RouterState.url);
-      this.store.dispatch(new SetMenu(activeUrl));
+      this.store.dispatch(new SetMenu(activeUrl!));
       resetForm(this.store, 'layout.searchForm');
     });
   }

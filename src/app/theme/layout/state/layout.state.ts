@@ -20,7 +20,7 @@ interface LayoutStateModel {
   openPanel: boolean;
   openMenu: boolean;
   pinMenu: boolean;
-  actualMenu: MenuModel;
+  actualMenu: MenuModel | undefined;
   searchForm: FormState<SearchForm>;
 }
 
@@ -68,7 +68,7 @@ export class LayoutState {
   }
 
   @Selector([LAYOUT_STATE_TOKEN])
-  static actualMenu(state: LayoutStateModel): MenuModel {
+  static actualMenu(state: LayoutStateModel): MenuModel | undefined {
     return state.actualMenu;
   }
 

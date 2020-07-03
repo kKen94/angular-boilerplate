@@ -15,7 +15,7 @@ export class ConfigService {
       this.http
         .get(jsonFile)
         .toPromise()
-        .then((response: Config) => {
+        .then((response: any) => {
           ConfigService.settings = response as Config;
           resolve();
         })

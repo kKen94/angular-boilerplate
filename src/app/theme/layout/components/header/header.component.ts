@@ -15,7 +15,7 @@ export class HeaderComponent {
   faBars = faBars;
   faChevronDown = faChevronDown;
   faSignOut = faSignOutAlt;
-  username: string;
+  username!: string;
   showPanel = false;
 
   constructor(
@@ -25,12 +25,12 @@ export class HeaderComponent {
     this.layoutFacade.username$.subscribe(result => (this.username = result));
   }
 
-  openPanel(e): void {
+  openPanel(e: MouseEvent): void {
     e.stopPropagation();
     this.layoutFacade.openPanel();
   }
 
-  openMenu(e): void {
+  openMenu(e: MouseEvent): void {
     e.stopPropagation();
     this.layoutFacade.openMenu();
   }

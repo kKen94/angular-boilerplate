@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
+// @ts-ignore
 import * as tailwind from '@tailwind-config';
 import { LayoutFacade } from '../../../layout.facade.service';
 import { Menu } from '../../../models/menu';
@@ -17,12 +18,12 @@ import { Menu } from '../../../models/menu';
 })
 export class VerticalLayout1Component implements OnInit {
   mdWidth = parseInt(tailwind.theme.screens.md.max);
-  previousWidth: number;
-  isNavbarHover: boolean;
-  isPanelOpen: boolean;
-  isMenuOpen: boolean;
-  isMenuPin: boolean;
-  actualMenu: Menu;
+  previousWidth!: number;
+  isNavbarHover!: boolean;
+  isPanelOpen!: boolean;
+  isMenuOpen!: boolean;
+  isMenuPin!: boolean;
+  actualMenu!: Menu;
   faSearch = faSearch;
   searchForm: FormGroup;
 
@@ -36,7 +37,7 @@ export class VerticalLayout1Component implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize(event: any) {
     if (
       event.target.innerWidth <= this.mdWidth &&
       this.previousWidth > this.mdWidth

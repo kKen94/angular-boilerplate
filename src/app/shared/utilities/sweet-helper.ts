@@ -57,7 +57,7 @@ export class SweetHelper {
     external = true,
   ): void {
     if (Swal.isVisible() && !overridePrevious && external) {
-      queue.push(options);
+      queue.push(options as never);
     } else {
       if (overridePrevious) {
         queue = [];

@@ -42,8 +42,8 @@ export class WebSocketHandler {
     this.setupActionsListeners();
   }
 
-  getConnectionId(name: string): string {
-    return this.connections.find(c => c.name === name).id;
+  getConnectionId(name: string): string | undefined {
+    return this.connections.find(c => c.name === name)?.id;
   }
 
   private setupActionsListeners(): void {
@@ -99,9 +99,9 @@ export class WebSocketHandler {
 
     connection.on('state-message', (message: any) => {
       this.store.dispatch(new WebSocketMessageReceived(message));
-      const type = getValue(message, options.typeKey);
+      const type = getValue(message, options.typeKey!);
       if (!type) {
-        throw new TypeKeyPropertyMissingError(options.typeKey);
+        throw new TypeKeyPropertyMissingError(options.typeKey!);
       }
       this.store.dispatch({ ...message, type });
     });
@@ -141,7 +141,7 @@ export class WebSocketHandler {
 
   private disconnect(name: string): void {
     const connection = this._connections?.find(c => c.name === name)?.hub;
-    connection.stop().then(() => {
+    connection?.stop().then(() => {
       this.dispatchWebSocketDisconnected(name);
     });
   }

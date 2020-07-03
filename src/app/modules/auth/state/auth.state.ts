@@ -25,7 +25,7 @@ import {
 /******************************** STATE MODEL ********************************/
 
 interface AuthStateModel {
-  token: string | null;
+  token: string | undefined;
   callbackUrl: string;
   recoveryForm: FormState<PasswordRecoveryForm>;
   loginForm: FormState<LoginDto>;
@@ -36,7 +36,7 @@ interface AuthStateModel {
 
 class AuthStateModel {
   constructor() {
-    this.token = null;
+    this.token = undefined;
     this.callbackUrl = '/';
     this.recoveryForm = new FormState();
     this.signUpForm = new FormState();
@@ -61,7 +61,7 @@ export class AuthState {
   /***************************** selectors ************************************/
 
   @Selector([AUTH_STATE_TOKEN])
-  static token(state: AuthStateModel): string | null {
+  static token(state: AuthStateModel): string | undefined {
     return state.token;
   }
 
