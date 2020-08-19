@@ -14,12 +14,12 @@
     ts-node "^8.5.2"
     webpack-merge "^4.2.1"
 
-"@angular-devkit/architect@0.1000.1":
-  version "0.1000.1"
-  resolved "http://verdaccio.progetplus.it/@angular-devkit%2farchitect/-/architect-0.1000.1.tgz#6ca8529d888b3f5fc1f28863bb744855b67b811e"
-  integrity sha512-GpoJ+p38feerxwfpJgrjwv/2c47qIX+TMdfKVqbswxLnzK21hXjd0zn6UfovAFwLeL1hRu2O00NDsmQn01gdoA==
+"@angular-devkit/architect@0.1000.6":
+  version "0.1000.6"
+  resolved "http://verdaccio.progetplus.it/@angular-devkit%2farchitect/-/architect-0.1000.6.tgz#d8143abbf1a1cef8e0ea9c80690821e8ca4cd54c"
+  integrity sha512-IZ8yiiW+LQ5mI3VbNHzisTIn0j6D1inQZgcZtc5W2A7fFNvBlIh6vGU3mB6Qvg678Gt6tlvnNT6/R9A9Ct7VnA==
   dependencies:
-    "@angular-devkit/core" "10.0.1"
+    "@angular-devkit/core" "10.0.6"
     rxjs "6.5.5"
 
 "@angular-devkit/architect@0.901.10", "@angular-devkit/architect@>=0.900.0 < 0.1000.0":
@@ -97,15 +97,15 @@
     webpack-subresource-integrity "1.4.0"
     worker-plugin "4.0.3"
 
-"@angular-devkit/build-angular@~0.1000.0":
-  version "0.1000.1"
-  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fbuild-angular/-/build-angular-0.1000.1.tgz#8073c8826763b6e0d2e5f2dcb21d55be11ce6937"
-  integrity sha512-rRYtHzy27BM3XjPVqlpQOs+RXAgtiT1Qr6EiLiMcb8Twg4aWHzKF+IITLQL9CSYkpOnY40vHjWZuEVu0qIhEPQ==
+"@angular-devkit/build-angular@~0.1000.6":
+  version "0.1000.6"
+  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fbuild-angular/-/build-angular-0.1000.6.tgz#7c4a8a4792f7252fe8d0bd57b46e86f44c93d4b3"
+  integrity sha512-tKyVD8Wqfo2wFdfWmc7OMzFn30Zl37heEusnMrQD5/zZ3Hw4Nqt2kf3pf3hbWl1GExUVFYyRNoCOCh9DaIfh0w==
   dependencies:
-    "@angular-devkit/architect" "0.1000.1"
-    "@angular-devkit/build-optimizer" "0.1000.1"
-    "@angular-devkit/build-webpack" "0.1000.1"
-    "@angular-devkit/core" "10.0.1"
+    "@angular-devkit/architect" "0.1000.6"
+    "@angular-devkit/build-optimizer" "0.1000.6"
+    "@angular-devkit/build-webpack" "0.1000.6"
+    "@angular-devkit/core" "10.0.6"
     "@babel/core" "7.9.6"
     "@babel/generator" "7.9.6"
     "@babel/plugin-transform-runtime" "7.9.6"
@@ -113,8 +113,8 @@
     "@babel/runtime" "7.9.6"
     "@babel/template" "7.8.6"
     "@jsdevtools/coverage-istanbul-loader" "3.0.3"
-    "@ngtools/webpack" "10.0.1"
-    ajv "6.12.2"
+    "@ngtools/webpack" "10.0.6"
+    ajv "6.12.3"
     autoprefixer "9.8.0"
     babel-loader "8.1.0"
     browserslist "^4.9.1"
@@ -168,10 +168,10 @@
     webpack-subresource-integrity "1.4.1"
     worker-plugin "4.0.3"
 
-"@angular-devkit/build-optimizer@0.1000.1":
-  version "0.1000.1"
-  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fbuild-optimizer/-/build-optimizer-0.1000.1.tgz#2cb46c7b8fc4361d06244d50545b23e91e866c15"
-  integrity sha512-Q60lxyetBcMKUiNMc1vGUExuJMashHB9CF8HVenX80R9ihaA/GHAUrD2PbKBpLVoC4T291uUhfcA8MB1fJNRfw==
+"@angular-devkit/build-optimizer@0.1000.6":
+  version "0.1000.6"
+  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fbuild-optimizer/-/build-optimizer-0.1000.6.tgz#f5b208be155b0ffb37d7380fc1a0e12a3765319d"
+  integrity sha512-R8zDEAvd9PeUKvOKh6I7xp3w+MViCwjGKoOZcznjH/i/9PQjOHCMwU5S48RQloQjMGu96eDMUGOVnd9qkzXUEw==
   dependencies:
     loader-utils "2.0.0"
     source-map "0.7.3"
@@ -189,13 +189,13 @@
     typescript "3.6.5"
     webpack-sources "1.4.3"
 
-"@angular-devkit/build-webpack@0.1000.1":
-  version "0.1000.1"
-  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fbuild-webpack/-/build-webpack-0.1000.1.tgz#c0e8208dfa52ca1743955c6ae96fb1d7685103e1"
-  integrity sha512-m+abxD38LYdHw+w53Rmc4MbuwDP7rfevAZ/1QR2WFYj0BI5QsTYGlpmieI2TXiwiwvTILn9UzYZAA16nKvmUwA==
+"@angular-devkit/build-webpack@0.1000.6":
+  version "0.1000.6"
+  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fbuild-webpack/-/build-webpack-0.1000.6.tgz#1ec6942b4079b6cb6704b5d39af7df14102d562e"
+  integrity sha512-R01bJWuvckU5IdjcqoCeikLBpHRqt5fgfD0a4Hsg3evqW6xxXcSgc+YhWfeEmyU/nF/kVel8G2bFyPzhZP4QdQ==
   dependencies:
-    "@angular-devkit/architect" "0.1000.1"
-    "@angular-devkit/core" "10.0.1"
+    "@angular-devkit/architect" "0.1000.6"
+    "@angular-devkit/core" "10.0.6"
     rxjs "6.5.5"
 
 "@angular-devkit/build-webpack@0.901.10":
@@ -207,12 +207,12 @@
     "@angular-devkit/core" "9.1.10"
     rxjs "6.5.4"
 
-"@angular-devkit/core@10.0.1":
-  version "10.0.1"
-  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fcore/-/core-10.0.1.tgz#acc1c6a088507e7340964c8cbf85e91781e86686"
-  integrity sha512-AXsxN00zbixi/9HyzzsDGm6rtMferxKfhG8WPJfp/0TLeJrmiLs5wdNjk8LhfTZABSTYx/QxRgOI6OnBoXePgg==
+"@angular-devkit/core@10.0.6":
+  version "10.0.6"
+  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fcore/-/core-10.0.6.tgz#cbb40a34f976f9496270efc4fbdb3ad836b9723e"
+  integrity sha512-mVvqSEoeErZ7bAModk95EAa6R9Nl23rvX+/TXuKVTK2dziMFBOrwHjb1DYhnZxFIH4xfUftCx+BWHjXBXCPYlA==
   dependencies:
-    ajv "6.12.2"
+    ajv "6.12.3"
     fast-json-stable-stringify "2.1.0"
     magic-string "0.25.7"
     rxjs "6.5.5"
@@ -229,19 +229,19 @@
     rxjs "6.5.4"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@10.0.1":
-  version "10.0.1"
-  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fschematics/-/schematics-10.0.1.tgz#2631043e7459c5d1228ffeba18eb63aa1e45f40e"
-  integrity sha512-lG70f4KsZews/z1npzJC7ccJgz3RXyLetyg+wa5uGWV+Silpr7XX+3U65DjPwG/+921woifeqRMbOhK+zCCaVA==
+"@angular-devkit/schematics@10.0.6":
+  version "10.0.6"
+  resolved "http://verdaccio.progetplus.it/@angular-devkit%2fschematics/-/schematics-10.0.6.tgz#dc3486448cc34544f7076f7fe0a67b75137ae840"
+  integrity sha512-V3T4cf+jVKiPYyBrSVHf3ZSnk4wIc1WEaaeFta56HccEGQCQpvAFKqDurmtMHer50Hhaxhn7IC3Oi5kPnvkNyQ==
   dependencies:
-    "@angular-devkit/core" "10.0.1"
+    "@angular-devkit/core" "10.0.6"
     ora "4.0.4"
     rxjs "6.5.5"
 
-"@angular/animations@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fanimations/-/animations-10.0.2.tgz#4af6983800c7e6fbb402f7183fc547ae480cb534"
-  integrity sha512-3fMR574KnaeAon7ZlwYCB2qkUoZ255Y2KwU6Z/ki37U66QZc8XMqf/d4oUiTZgLsJG4a5Whse0IX8Jz5/HAvQQ==
+"@angular/animations@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fanimations/-/animations-10.0.10.tgz#c4f872e2917e9e7d4ffd04a64539e2aae67eef0c"
+  integrity sha512-lIbNeLVVl9bO41orPFpKoobCvxZIZ2wdcKJBEFtQiOdw0khRQQ8k7so4TAWOZXRJR+MkOUCjU2pO8gbMXgBweQ==
   dependencies:
     tslib "^2.0.0"
 
@@ -254,16 +254,16 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@~10.0.0":
-  version "10.0.1"
-  resolved "http://verdaccio.progetplus.it/@angular%2fcli/-/cli-10.0.1.tgz#23fd9e6495a89d7fe1bc756fdfb5af9c71bcaf26"
-  integrity sha512-6Ht3022UcaWTBDnQKgcvTHbOP4ITjzn1DcZWKN0+zKk4PNqOwWtOEF2CBokOG79gTQVdrp2p5YQo5uX6UG7KMQ==
+"@angular/cli@~10.0.6":
+  version "10.0.6"
+  resolved "http://verdaccio.progetplus.it/@angular%2fcli/-/cli-10.0.6.tgz#366114e36a155611b553be535bec166bd28b4119"
+  integrity sha512-gQbQA/CsCyMf9RKEv1hJBCdBebV2BHeT4lGi56Eii0IkvZD5WIH0dNfQzR+6ErqGDgE1EI+9YCuX3psMEvCRUA==
   dependencies:
-    "@angular-devkit/architect" "0.1000.1"
-    "@angular-devkit/core" "10.0.1"
-    "@angular-devkit/schematics" "10.0.1"
-    "@schematics/angular" "10.0.1"
-    "@schematics/update" "0.1000.1"
+    "@angular-devkit/architect" "0.1000.6"
+    "@angular-devkit/core" "10.0.6"
+    "@angular-devkit/schematics" "10.0.6"
+    "@schematics/angular" "10.0.6"
+    "@schematics/update" "0.1000.6"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "4.1.1"
@@ -280,17 +280,17 @@
     universal-analytics "0.4.20"
     uuid "8.1.0"
 
-"@angular/common@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fcommon/-/common-10.0.2.tgz#8d5422b3a3e1bc405606476b90b0caffc9c9155a"
-  integrity sha512-zpNB2XD6jinXZjfihoO5Q1Yg7urfpZTt/fitdmwFHCcQ/1qZ9T2BVh8+VqVRkh6Pjxmtvu0uPnJ1a/aZ5f9r9A==
+"@angular/common@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fcommon/-/common-10.0.10.tgz#405c3640449bbf9f2c3c764be93a91749cb931d4"
+  integrity sha512-p6/pTk0s0Ai5uUkOHHFZwp+TjxRNPldPxTU2LVxg2xuBEQTO53BsfBKn3zi74epdb1kBC0Yjdj6yEL4dITBs7A==
   dependencies:
     tslib "^2.0.0"
 
-"@angular/compiler-cli@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fcompiler-cli/-/compiler-cli-10.0.2.tgz#8f178a03989e0018890c52807df9e3e03faaf47a"
-  integrity sha512-LGX86k1hOyaw5aPCjFfoLuPhVLKMENOdCBeNBzZB+H2CUGHfv8OWFB1EzjZO1N07VGR7JoMx9ZWSP7ornhuS4Q==
+"@angular/compiler-cli@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fcompiler-cli/-/compiler-cli-10.0.10.tgz#11ec0754f5990d5dc351fd04f63ea1fececb225e"
+  integrity sha512-XkvWdJKr6HkyzAbcmy99HyDR4z949z9nHGwHNLBQjLbkX11i03fvS3bI5kgwqtNiLWYqxiPfXnpAyLBeFghCcw==
   dependencies:
     canonical-path "1.0.0"
     chokidar "^3.0.0"
@@ -306,50 +306,50 @@
     tslib "^2.0.0"
     yargs "15.3.0"
 
-"@angular/compiler@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fcompiler/-/compiler-10.0.2.tgz#1056af84ad76763f03228aa3a60b63a5cd775944"
-  integrity sha512-TNE5ESDlRCVneb/K62HOEgLpxuZZTlw8RcmOy5vt3SngEVc576OE/aYsEA6MCwTlqj16GLSS3jGm9HBJcBKUVw==
+"@angular/compiler@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fcompiler/-/compiler-10.0.10.tgz#e2e6dff08b7c234219b13d71247d6fd452b2f8b3"
+  integrity sha512-fO7kml0HUgnMa5eviKUk+j7NACASkoMAEgvbcVdKmGsSDu9YVkaqSdLXuj2vu9glSJWDRkZJKSrt9MzbmhyB5A==
   dependencies:
     tslib "^2.0.0"
 
-"@angular/core@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fcore/-/core-10.0.2.tgz#d2d2c2dd4a9e80dcccc63c274f13ab7397ee5a3b"
-  integrity sha512-r4M1D2NOdkmmFyvYLHRYSIBKTGNXQarZHDZcm5oEq2eTsRVe2u9MYIeOpHKeVQCQK7XKQVB13IZQP3XpUvljFg==
+"@angular/core@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fcore/-/core-10.0.10.tgz#10ca31d55899992e0b1585cfef4df8c40a1c60ac"
+  integrity sha512-PIQhLqjZayVXJoXs4WQu7orkePqFiux19y7bgBrsSAithe+g9BkrSIdX7+tkkX0zggUWKywY92YuMZCJ/S+uiw==
   dependencies:
     tslib "^2.0.0"
 
-"@angular/forms@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fforms/-/forms-10.0.2.tgz#fa443f73156640664a9e018aaeb42f85d6d20fcb"
-  integrity sha512-qnfApb5Q58SFdl8za8i6ijvP0UfVGxxTtIVnf8czVU5Jz5/KYDbPeChVw/aPl3hfXq8jt0Q6Yl99aAm/BNyhpQ==
+"@angular/forms@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fforms/-/forms-10.0.10.tgz#c9ed1728be678209beaae89f9aa257357764fb36"
+  integrity sha512-bWjbsqMTiCNQZzXAfiEwT/tiAzSvChnqBimrJWNSHVYRkp71TkDcKXn6mA+E//YR0eZ84GKNNiVlKFxqkmeyqQ==
   dependencies:
     tslib "^2.0.0"
 
-"@angular/language-service@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2flanguage-service/-/language-service-10.0.2.tgz#31f22020be96ab2cf77283e0627f8a6fffedfe36"
-  integrity sha512-kEMJ3DkprpoGJvEjvH/PZrBKtgCbLtFYtrXHRDy2+92vgCT0Xz6TwzZ2qlwlQSijffOgsV5LwdjI4oxpgVKReQ==
+"@angular/language-service@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2flanguage-service/-/language-service-10.0.10.tgz#ef01bcd48b8ce51b57c755e75c725b2b6ae43d2f"
+  integrity sha512-Id3hmPR5UeWAKsDeB6+O7m+4+FpUr5zcYdM8xXAzTjjn8laSuDUMb17wsAVRntPgRJv4SeaqUbWevwSkM5KExA==
 
-"@angular/platform-browser-dynamic@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fplatform-browser-dynamic/-/platform-browser-dynamic-10.0.2.tgz#b752e2110e5a4316087ce7922227b453e423c144"
-  integrity sha512-R1rt1/Ynm0DHgzMBcduCPoDg2y3MrYZVgT+N0DLobr2nCaVD74vGsJBVCRv7/m1sdCxyhPlOvq8Bm5sRauw2fw==
+"@angular/platform-browser-dynamic@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fplatform-browser-dynamic/-/platform-browser-dynamic-10.0.10.tgz#0ae069a67c3fa7d593af554a333dd2b69d12903c"
+  integrity sha512-6jbn0Ldyc+80BCETGtE7pzfKlbjfa/wEPhLEGWoYtxrrJ5UB3CblGpDMOsv1ibOQijPZ/JSmIMmAxz66+pLx3g==
   dependencies:
     tslib "^2.0.0"
 
-"@angular/platform-browser@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2fplatform-browser/-/platform-browser-10.0.2.tgz#518db3bdff9692cc4ec0c871f3305218da66aebd"
-  integrity sha512-FLS3fYSuWvrDc7PiVCvs4joWZZxDe9+alJi90Sub1oBS/EnxmZpkS0Gr7zQv4MjAvVhNCVoTzL3CaV/SIoZqaw==
+"@angular/platform-browser@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2fplatform-browser/-/platform-browser-10.0.10.tgz#13ea3e32fb798c6d10148d38f1c9589a26f74e6d"
+  integrity sha512-srNGkvg9177skff7QOe3L+nGOSbrKLzFt3Z5O3oM0N0TWr8QlWEA+zQm8n0zLHI8AmdZbmFzAYYJiBvVCSc5RQ==
   dependencies:
     tslib "^2.0.0"
 
-"@angular/router@~10.0.0":
-  version "10.0.2"
-  resolved "http://verdaccio.progetplus.it/@angular%2frouter/-/router-10.0.2.tgz#6514540f4f3179d8be3fd23b1f4a0dd02801a314"
-  integrity sha512-IcA3W+r5T0NC8TM4J9F0VOxG0wr7nJOSef6Qek6utZd6ByLlXxOhBrPIC5Ou+QNZeg9OuI2FBt6coea9jgmNOA==
+"@angular/router@~10.0.10":
+  version "10.0.10"
+  resolved "http://verdaccio.progetplus.it/@angular%2frouter/-/router-10.0.10.tgz#fee0fccbe00c3f4a29ddeef9fe1bcbcb8b7ad28c"
+  integrity sha512-wDmr/Spuv4OhPK5a49AvgJhaedRw4yb7nmPMd51sWqzOV31RRcGXORjiXZOcSpElLxM9f7JV0tWDR5p5ko/kPA==
   dependencies:
     tslib "^2.0.0"
 
@@ -1476,12 +1476,12 @@
     request "^2.88.0"
     ws "^6.0.0"
 
-"@ngtools/webpack@10.0.1":
-  version "10.0.1"
-  resolved "http://verdaccio.progetplus.it/@ngtools%2fwebpack/-/webpack-10.0.1.tgz#f3d5143f268cc1c3c8d94de0e048b970c95e6a27"
-  integrity sha512-/uUTczGcH2WJoVovCLHXdPdTzN0yQZontcf5MkoDjlA0selUdRFntV9cnUWoray9SVxzgoHqjRxBANCTsiiuuw==
+"@ngtools/webpack@10.0.6":
+  version "10.0.6"
+  resolved "http://verdaccio.progetplus.it/@ngtools%2fwebpack/-/webpack-10.0.6.tgz#6fe392ecad9f2869fc68eda7f1344ad0b68a8898"
+  integrity sha512-AbSDhPmsljkZO2jHFpge/5AHLQIrbscWgo4brrhF7NQ5TvPgE0Xn0wU7gxB9++hVUKQLGnnbAvewJyB/uYb9Nw==
   dependencies:
-    "@angular-devkit/core" "10.0.1"
+    "@angular-devkit/core" "10.0.6"
     enhanced-resolve "4.1.1"
     rxjs "6.5.5"
     webpack-sources "1.4.3"
@@ -1573,21 +1573,21 @@
   dependencies:
     esquery "^1.0.1"
 
-"@schematics/angular@10.0.1":
-  version "10.0.1"
-  resolved "http://verdaccio.progetplus.it/@schematics%2fangular/-/angular-10.0.1.tgz#0660d5eb99169a67ecfc7a4c2946de1ea32320c0"
-  integrity sha512-SrWr2FzenwuofRpcaLhzJYNFVJmJwKxlKu32dWAVnclpteMO0Hnp/jVI/e70HIc6zoWzgJ4yArmwBTA+Q26yaA==
+"@schematics/angular@10.0.6":
+  version "10.0.6"
+  resolved "http://verdaccio.progetplus.it/@schematics%2fangular/-/angular-10.0.6.tgz#568590574dca1556280a0a04f625f79bee34ee4a"
+  integrity sha512-TPBpo0GnMJLvKE6rYZDkSy9pnkMH55rSJ6nfLDpQ5zzmhoD/QnASUr8trfTFs3+MqmPlX61xI00+HmStmI8sJQ==
   dependencies:
-    "@angular-devkit/core" "10.0.1"
-    "@angular-devkit/schematics" "10.0.1"
+    "@angular-devkit/core" "10.0.6"
+    "@angular-devkit/schematics" "10.0.6"
 
-"@schematics/update@0.1000.1":
-  version "0.1000.1"
-  resolved "http://verdaccio.progetplus.it/@schematics%2fupdate/-/update-0.1000.1.tgz#bcccf6822eb2b145a0ac3d1b352ada2925a558bf"
-  integrity sha512-AiU3RiKMfzxquzxANgDMO88iTkk9pVKQ5fZV4UwiyZO5q/fUCW4FFx9h4Nc7e9adchM+VaCz/uEAWqrVdsPv9Q==
+"@schematics/update@0.1000.6":
+  version "0.1000.6"
+  resolved "http://verdaccio.progetplus.it/@schematics%2fupdate/-/update-0.1000.6.tgz#f0131d4b3ed879ae8f19c032d310bece79691738"
+  integrity sha512-GGfPGPjRF/MA4EeJ+h1ebzoYDzChF4BV7SaTfpT107LPCD3McRjKS39Jw2qH/ArGNSbrbJ8fYNOIj3g/uh1GoA==
   dependencies:
-    "@angular-devkit/core" "10.0.1"
-    "@angular-devkit/schematics" "10.0.1"
+    "@angular-devkit/core" "10.0.6"
+    "@angular-devkit/schematics" "10.0.6"
     "@yarnpkg/lockfile" "1.1.0"
     ini "1.3.5"
     npm-package-arg "^8.0.0"
@@ -2106,7 +2106,17 @@ ajv@6.12.0:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@6.12.2, ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.5.5:
+ajv@6.12.3:
+  version "6.12.3"
+  resolved "http://verdaccio.progetplus.it/ajv/-/ajv-6.12.3.tgz#18c5af38a111ddeb4f2697bd78d68abc1cabd706"
+  integrity sha512-4K0cK3L1hsqk9xIb2z9vs/XU+PGJZ9PNpJRDS9YLzmNdX6jmVPfamLvTJr0aDAusnHyCHO6MjzlkAsgtqp9teA==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.5.5:
   version "6.12.2"
   resolved "http://verdaccio.progetplus.it/ajv/-/ajv-6.12.2.tgz#c629c5eced17baf314437918d2da88c99d5958cd"
   integrity sha512-k+V+hzjm5q/Mr8ef/1Y9goCmlsK4I6Sm74teeyGvFk1XrOsbsKLjEdrvny42CZ+a8sXbk8KWpY/bDwS+FLL2UQ==
