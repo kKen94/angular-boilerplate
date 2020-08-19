@@ -105,27 +105,27 @@ export class AuthState {
   }
 
   @Selector([AUTH_STATE_TOKEN])
-  static loginFormValidation(state: AuthStateModel) {
+  static loginFormValidation(state: AuthStateModel): boolean {
     return state.loginForm.status === 'VALID';
   }
 
   @Selector([AUTH_STATE_TOKEN])
-  static passwordRecoveryFormValidation(state: AuthStateModel) {
+  static passwordRecoveryFormValidation(state: AuthStateModel): boolean {
     return state.recoveryForm.status === 'VALID';
   }
 
   @Selector([AUTH_STATE_TOKEN])
-  static changePasswordFormValidation(state: AuthStateModel) {
+  static changePasswordFormValidation(state: AuthStateModel): boolean {
     return state.changePasswordForm.status === 'VALID';
   }
 
   @Selector([AUTH_STATE_TOKEN])
-  static resetPasswordFormValidation(state: AuthStateModel) {
+  static resetPasswordFormValidation(state: AuthStateModel): boolean {
     return state.resetPasswordForm.status === 'VALID';
   }
 
   @Selector([AUTH_STATE_TOKEN])
-  static signUpFormValidation(state: AuthStateModel) {
+  static signUpFormValidation(state: AuthStateModel): boolean {
     return state.signUpForm.status === 'VALID';
   }
 
@@ -134,10 +134,10 @@ export class AuthState {
   /*********************** actions ****************************/
 
   @Action(Login)
-  login(ctx: StateContext<AuthStateModel>): Observable<{ token: string }> {
+  login(ctx: StateContext<AuthStateModel>): Observable<unknown> {
     const loginValue = ctx.getState().loginForm.model;
     return this.authApi.login(loginValue).pipe(
-      tap((result: { token: string }) => {
+      tap((result: { _: unknown; token: string }) => {
         ctx.patchState({
           token: result.token,
         });
@@ -151,25 +151,25 @@ export class AuthState {
   }
 
   @Action(RecoverPassword)
-  recoverPassword(ctx: StateContext<AuthStateModel>): Observable<any> {
+  recoverPassword(ctx: StateContext<AuthStateModel>): Observable<unknown> {
     const username = ctx.getState().recoveryForm.model.username;
     return this.authApi.recoverPassword(username);
   }
 
   @Action(SignUp)
-  signUp(ctx: StateContext<AuthStateModel>): Observable<any> {
+  signUp(ctx: StateContext<AuthStateModel>): Observable<unknown> {
     const model = ctx.getState().signUpForm.model;
     return this.authApi.signUp(model);
   }
 
   @Action(ChangePassword)
-  changePassword(ctx: StateContext<AuthStateModel>): Observable<any> {
+  changePassword(ctx: StateContext<AuthStateModel>): Observable<unknown> {
     const model: ChangePasswordDto = ctx.getState().changePasswordForm.model;
     return this.authApi.changePassword(model);
   }
 
   @Action(ResetPassword)
-  resetPassword(ctx: StateContext<AuthStateModel>): Observable<any> {
+  resetPassword(ctx: StateContext<AuthStateModel>): Observable<unknown> {
     const newPassword = ctx.getState().resetPasswordForm.model.newPassword;
     return this.authApi.resetPassword(newPassword);
   }

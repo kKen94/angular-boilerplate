@@ -36,6 +36,7 @@ export class WebSocketHandler {
     this._connections = value;
   }
 
+  // tslint:disable-next-line:variable-name
   private _connections: Connection[] = [];
 
   constructor(private store: Store, private actions$: Actions) {
@@ -97,11 +98,14 @@ export class WebSocketHandler {
       this.store.dispatch(new WebSocketReconnected(connectionId));
     });
 
-    connection.on('state-message', (message: any) => {
+    connection.on('state-message', (message: { _: unknown }) => {
       this.store.dispatch(new WebSocketMessageReceived(message));
-      const type = getValue(message, options.typeKey!);
+      if (!options.typeKey) {
+        throw new Error('Missing parameter typeKey');
+      }
+      const type = getValue(message, options.typeKey);
       if (!type) {
-        throw new TypeKeyPropertyMissingError(options.typeKey!);
+        throw new TypeKeyPropertyMissingError(options.typeKey);
       }
       this.store.dispatch({ ...message, type });
     });
@@ -148,7 +152,9 @@ export class WebSocketHandler {
 
   // private send(data): void {
   //   if (!this.connection) {
-  //     throw new Error('You must connect to the socket before sending any data');
+  //     throw new Error('
+  //       You must connect to the socket before sending any data
+  //     ');
   //   }
   //   this.connection.send(data).then(
   //     () => {},

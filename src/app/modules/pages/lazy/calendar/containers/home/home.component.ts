@@ -6,7 +6,7 @@ import { CalendarFacade } from '../../calendar.facade.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  calendar: any;
+  calendar: unknown;
   searchBarText!: string;
 
   constructor(private facade: CalendarFacade) {

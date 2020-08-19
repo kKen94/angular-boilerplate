@@ -37,7 +37,8 @@ const STATES = [AuthState, LayoutState];
     NgxsModule.forRoot(STATES, { developmentMode: !environment.production }),
     NgxsStoragePluginModule.forRoot({
       key: 'auth.token',
-      // storage: per scegliere tra session e local potrei implementare un'interfaccia custom come suggerito dalla documentazione del plugin
+      // storage: per scegliere tra session e local potrei implementare
+      // un'interfaccia custom come suggerito dalla documentazione del plugin
     }),
     NgxsFormPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
@@ -74,7 +75,8 @@ const STATES = [AuthState, LayoutState];
     },
     {
       provide: APP_INITIALIZER,
-      useFactory: noop, // Trick to listen on RouterDataResolved in LayoutFacade immediatly
+      useFactory: noop,
+      // Trick to listen on RouterDataResolved in LayoutFacade immediatly
       deps: [LayoutFacade],
       multi: true,
     },

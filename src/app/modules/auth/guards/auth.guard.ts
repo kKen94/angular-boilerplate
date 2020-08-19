@@ -8,7 +8,7 @@ import { AuthState } from '../state/auth.state';
 export class AuthGuard implements CanActivate {
   constructor(private store: Store, private facade: AuthFacade) {}
 
-  canActivate() {
+  canActivate(): boolean {
     const result = this.store.selectSnapshot(AuthState.isAuthenticated);
     if (result) {
       return true;

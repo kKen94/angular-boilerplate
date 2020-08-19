@@ -14,9 +14,9 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private store: Store) {}
 
   intercept(
-    req: HttpRequest<any>,
+    req: HttpRequest<unknown>,
     next: HttpHandler,
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<unknown>> {
     const token = this.store.selectSnapshot(AUTH_STATE_TOKEN).token;
     const authReq = !!token
       ? req.clone({

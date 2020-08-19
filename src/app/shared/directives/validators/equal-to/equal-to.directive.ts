@@ -1,4 +1,4 @@
-import { Directive, forwardRef, Input, OnInit } from '@angular/core';
+import { Directive, forwardRef, Input, OnInit, Provider } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -9,7 +9,7 @@ import {
 
 import { equalTo } from './equal-to.validator';
 
-const EQUAL_TO_VALIDATOR: any = {
+const EQUAL_TO_VALIDATOR: Provider = {
   provide: NG_VALIDATORS,
   useExisting: forwardRef(() => EqualToValidator),
   multi: true,
@@ -28,7 +28,7 @@ export class EqualToValidator implements Validator, OnInit {
     this.validator = equalTo(this.equalTo);
   }
 
-  public validate(c: AbstractControl): { [key: string]: any } | null {
+  public validate(c: AbstractControl): { [key: string]: unknown } | null {
     return this.validator(c);
   }
 }

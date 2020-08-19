@@ -4,11 +4,9 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class CalendarApi {
-
   constructor(private http: HttpClient) {}
 
-  fetch(): Observable<any> {
+  fetch(): Observable<unknown> {
     return of({});
   }
-
 }

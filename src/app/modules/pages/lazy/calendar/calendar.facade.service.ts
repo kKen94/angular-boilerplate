@@ -6,7 +6,7 @@ import { CalendarState } from './state/calendar.state';
 
 @Injectable()
 export class CalendarFacade {
-  @Select(CalendarState.calendar) calendar$!: Observable<any>;
+  @Select(CalendarState.calendar) calendar$!: Observable<unknown>;
   @Select(LayoutState.textSearch) search$!: Observable<string>;
 
   constructor(private store: Store) {}

@@ -7,6 +7,7 @@ import {
   RouterState,
 } from '@ngxs/router-plugin';
 import { Actions, ofActionSuccessful, Select, Store } from '@ngxs/store';
+import { resetForm } from '@utility';
 import { Observable } from 'rxjs';
 import { AuthState } from '../../modules/auth/state/auth.state';
 import OpenPanel = QuickPanel.Open;
@@ -19,7 +20,6 @@ import HoverOut = Navbar.HoverOut;
 import { Menu as MenuModel } from './models/menu';
 import { Menu, Navbar, QuickPanel, SetMenu } from './state/layout.action';
 import { LayoutState } from './state/layout.state';
-import { resetForm } from '@utility';
 
 @Injectable()
 export class LayoutFacade {
@@ -43,7 +43,7 @@ export class LayoutFacade {
       );
     this.actions$.pipe(ofActionSuccessful(RouterDataResolved)).subscribe(() => {
       const activeUrl = this.store.selectSnapshot(RouterState.url);
-      this.store.dispatch(new SetMenu(activeUrl!));
+      this.store.dispatch(new SetMenu(activeUrl));
       resetForm(this.store, 'layout.searchForm');
     });
   }

@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 // @ts-ignore
 import * as tailwind from '@tailwind-config';
+import { navbar } from '../../../animations/navbar';
 import { LayoutFacade } from '../../../layout.facade.service';
 import { Menu } from '../../../models/menu';
 
@@ -15,6 +16,7 @@ import { Menu } from '../../../models/menu';
   selector: 'app-vertical-layout-1',
   templateUrl: './layout-1.component.html',
   encapsulation: ViewEncapsulation.None,
+  animations: [navbar],
 })
 export class VerticalLayout1Component implements OnInit {
   mdWidth = parseInt(tailwind.theme.screens.md.max);
@@ -28,7 +30,7 @@ export class VerticalLayout1Component implements OnInit {
   searchForm: FormGroup;
 
   @HostListener('window:keydown', ['$event'])
-  handleKeyDown(event: KeyboardEvent) {
+  handleKeyDown(event: KeyboardEvent): void {
     if (event.code === 'Escape') {
       this.closePanel();
       this.closeMenu();
@@ -37,7 +39,7 @@ export class VerticalLayout1Component implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize(event: { _: unknown; target: Window }): void {
     if (
       event.target.innerWidth <= this.mdWidth &&
       this.previousWidth > this.mdWidth
@@ -67,7 +69,7 @@ export class VerticalLayout1Component implements OnInit {
     this.facade.menu$.subscribe(result => (this.actualMenu = result));
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.previousWidth = window.innerWidth;
     if (window.innerWidth <= this.mdWidth) {
       this.closeMenu();
