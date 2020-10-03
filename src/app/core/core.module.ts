@@ -1,6 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
-import { ModalModule } from '@components';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
@@ -38,7 +37,8 @@ const STATES = [AuthState, LayoutState];
     NgxsModule.forRoot(STATES, { developmentMode: !environment.production }),
     NgxsStoragePluginModule.forRoot({
       key: 'auth.token',
-      // storage: per scegliere tra session e local potrei implementare un'interfaccia custom come suggerito dalla documentazione del plugin
+      // storage: per scegliere tra session e local potrei implementare
+      // un'interfaccia custom come suggerito dalla documentazione del plugin
     }),
     NgxsFormPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
@@ -49,7 +49,6 @@ const STATES = [AuthState, LayoutState];
       disabled: environment.production,
       logger: console,
     }),
-    ModalModule.forRoot(),
   ],
   exports: [
     HttpClientModule,
@@ -61,7 +60,6 @@ const STATES = [AuthState, LayoutState];
     NgxsReduxDevtoolsPluginModule,
     NgxsLoggerPluginModule,
     NgxsWebsocketCustomPluginModule,
-    ModalModule,
   ],
   providers: [
     AuthFacade,
@@ -77,7 +75,8 @@ const STATES = [AuthState, LayoutState];
     },
     {
       provide: APP_INITIALIZER,
-      useFactory: noop, // Trick to listen on RouterDataResolved in LayoutFacade immediatly
+      useFactory: noop,
+      // Trick to listen on RouterDataResolved in LayoutFacade immediatly
       deps: [LayoutFacade],
       multi: true,
     },

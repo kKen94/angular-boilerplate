@@ -8,8 +8,8 @@ import { LayoutFacade } from '../../../layout.facade.service';
 })
 export class NavbarVerticalComponent {
   faThumbtack = faThumbtack;
-  isMenuPin: boolean;
-  isNavbarHover: boolean;
+  isMenuPin!: boolean;
+  isNavbarHover!: boolean;
 
   constructor(private facade: LayoutFacade) {
     this.facade.isMenuPin$.subscribe(result => (this.isMenuPin = result));

@@ -3,7 +3,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![license](https://img.shields.io/github/license/kKen94/ngx-progress)](http://opensource.org/licenses/MIT)
 
-This project aims to be a plug & play boilerplate of Angular 9
+This project aims to be a plug & play boilerplate of Angular 10
 
 Some development tools are preset, such as
     

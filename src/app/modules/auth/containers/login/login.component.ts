@@ -8,11 +8,11 @@ import { AuthFacade } from '../../auth.facade.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  isFormValid: boolean;
+  isFormValid!: boolean;
 
   constructor(private authFacade: AuthFacade, private fb: FormBuilder) {
     this.loginForm = fb.group({
-      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
     this.authFacade.isLoginValid$.subscribe(

@@ -9,9 +9,9 @@ import { MENU } from './menu';
   templateUrl: './menu.component.html',
 })
 export class MenuComponent {
-  actualMenu: Menu;
-  isMenuPin: boolean;
-  isNavbarHover: boolean;
+  actualMenu!: Menu;
+  isMenuPin!: boolean;
+  isNavbarHover!: boolean;
   menu = MENU;
 
   constructor(private facade: LayoutFacade) {

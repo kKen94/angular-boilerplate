@@ -2,7 +2,7 @@ export interface FormState<T> {
   model: T;
   dirty: boolean;
   status: string;
-  errors: any;
+  errors: unknown;
 }
 
 export class FormState<T> {

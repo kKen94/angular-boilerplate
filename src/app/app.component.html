@@ -1,1 +1,11 @@
 <router-outlet></router-outlet>
+
+<!-- TODO: importante -->
+<!-- Come si può vedere dal custom webpack, viene effettuata un'operazione diversa quando ci troviamo in sviluppo -->
+<!-- Questo perché in fase di compilazione tailwind genera tutto il css per un totale di 8MB -->
+<!-- Per la pubblicazione viene effettuato il purge di tutto il css inutile, passando da 8MB a 22kb -->
+<!-- Il purge, compe specificato nelle impostazioni, tiene in considerazione l'html presente nei file .html e nei file .ts per capire quale css tenere -->
+<!-- Ci sono però dei casi, come la classe gutter o le classi --webkit, in cui il css non viene usato direttamente nell'html -->
+<!-- In questo caso ci sono delle regole che vengono whitlistate. Si veda _override.scss o _custom.scss -->
+<!-- MAI TOGLIERE I COMMENTI DOVE SI DICE A PURGECSS DOVE INIZIARE AD IGNORARE LE REGOLE DA ELIMINARE -->
+<!-- In fase di sviluppo invece va bene non usare il purge, altrimenti viene compilato solo con le regole attualmente usate e se si vuole inserire una nuova classe dovrà essere ricompilato tutto e il watch da solo non basterà -->

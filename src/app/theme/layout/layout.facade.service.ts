@@ -7,6 +7,7 @@ import {
   RouterState,
 } from '@ngxs/router-plugin';
 import { Actions, ofActionSuccessful, Select, Store } from '@ngxs/store';
+import { resetForm } from '@utility';
 import { Observable } from 'rxjs';
 import { AuthState } from '../../modules/auth/state/auth.state';
 import OpenPanel = QuickPanel.Open;
@@ -19,17 +20,16 @@ import HoverOut = Navbar.HoverOut;
 import { Menu as MenuModel } from './models/menu';
 import { Menu, Navbar, QuickPanel, SetMenu } from './state/layout.action';
 import { LayoutState } from './state/layout.state';
-import { resetForm } from '@utility';
 
 @Injectable()
 export class LayoutFacade {
-  @Select(LayoutState.hoverNavbar) isNavbarHover$: Observable<boolean>;
-  @Select(LayoutState.openPanel) isPanelOpen$: Observable<boolean>;
-  @Select(LayoutState.openMenu) isMenuOpen$: Observable<boolean>;
-  @Select(LayoutState.pinMenu) isMenuPin$: Observable<boolean>;
-  @Select(LayoutState.actualMenu) menu$: Observable<MenuModel>;
-  @Select(AuthState.username) username$: Observable<string>;
-  @Select(LayoutState.textSearch) search$: Observable<string>;
+  @Select(LayoutState.hoverNavbar) isNavbarHover$!: Observable<boolean>;
+  @Select(LayoutState.openPanel) isPanelOpen$!: Observable<boolean>;
+  @Select(LayoutState.openMenu) isMenuOpen$!: Observable<boolean>;
+  @Select(LayoutState.pinMenu) isMenuPin$!: Observable<boolean>;
+  @Select(LayoutState.actualMenu) menu$!: Observable<MenuModel>;
+  @Select(AuthState.username) username$!: Observable<string>;
+  @Select(LayoutState.textSearch) search$!: Observable<string>;
 
   constructor(
     private store: Store,

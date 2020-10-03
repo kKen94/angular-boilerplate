@@ -1,5 +1,5 @@
 export interface LoginDto {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -31,4 +31,8 @@ export interface SignUpDto {
 
 export interface SignUpForm extends SignUpDto {
   confirmPassword: string;
+}
+
+export interface Token {
+  token: string;
 }

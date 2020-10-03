@@ -20,7 +20,7 @@ interface LayoutStateModel {
   openPanel: boolean;
   openMenu: boolean;
   pinMenu: boolean;
-  actualMenu: MenuModel;
+  actualMenu: MenuModel | undefined;
   searchForm: FormState<SearchForm>;
 }
 
@@ -68,7 +68,7 @@ export class LayoutState {
   }
 
   @Selector([LAYOUT_STATE_TOKEN])
-  static actualMenu(state: LayoutStateModel): MenuModel {
+  static actualMenu(state: LayoutStateModel): MenuModel | undefined {
     return state.actualMenu;
   }
 
@@ -129,7 +129,12 @@ export class LayoutState {
 
   @Action(SetMenu)
   setMenu(ctx: StateContext<LayoutStateModel>, action: SetMenu): void {
-    let menu = MENU.find(c => c.routerLink.includes(action.activeUrl));
+    if (action.activeUrl === undefined) {
+      return;
+    }
+    let menu = MENU.find(c =>
+      c.routerLink.includes(action.activeUrl as string),
+    );
     if (!menu && !action.activeUrl.includes('cart')) {
       const s = action.activeUrl.split('/').slice(0, -1).join('/');
       menu = MENU.find(

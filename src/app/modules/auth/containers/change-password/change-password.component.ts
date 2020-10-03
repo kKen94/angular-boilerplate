@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { equalTo } from '@validator';
 import { AuthFacade } from '../../auth.facade.service';
 
@@ -9,7 +14,7 @@ import { AuthFacade } from '../../auth.facade.service';
 })
 export class ChangePasswordComponent {
   changePasswordForm: FormGroup;
-  isFormValid: boolean;
+  isFormValid!: boolean;
 
   constructor(private authFacade: AuthFacade, private fb: FormBuilder) {
     this.changePasswordForm = fb.group({

@@ -12,6 +12,7 @@ import {
   Select,
   Store,
 } from '@ngxs/store';
+import { resetForm, SweetHelper } from '@utility';
 import { Observable } from 'rxjs';
 import {
   ChangePassword,
@@ -22,18 +23,17 @@ import {
   SignUp,
 } from './state/auth.action';
 import { AuthState, AUTH_STATE_TOKEN } from './state/auth.state';
-import { resetForm, SweetHelper } from '@utility';
 
 @Injectable()
 export class AuthFacade {
-  @Select(AuthState.loginFormValidation) isLoginValid$: Observable<boolean>;
-  @Select(AuthState.signUpFormValidation) isSignUpValid$: Observable<boolean>;
+  @Select(AuthState.loginFormValidation) isLoginValid$!: Observable<boolean>;
+  @Select(AuthState.signUpFormValidation) isSignUpValid$!: Observable<boolean>;
   @Select(AuthState.passwordRecoveryFormValidation)
-  isPasswordRecoveryValid$: Observable<boolean>;
+  isPasswordRecoveryValid$!: Observable<boolean>;
   @Select(AuthState.changePasswordFormValidation)
-  isChangePasswordValid$: Observable<boolean>;
+  isChangePasswordValid$!: Observable<boolean>;
   @Select(AuthState.resetPasswordFormValidation)
-  isResetPasswordValid$: Observable<boolean>;
+  isResetPasswordValid$!: Observable<boolean>;
 
   constructor(private store: Store, private actions: Actions) {
     this.actions.pipe(ofActionSuccessful(Login)).subscribe(() => {
