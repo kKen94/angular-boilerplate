@@ -6,8 +6,8 @@ import { CalendarFacade } from '../../calendar.facade.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  calendar: any;
-  searchBarText: string;
+  calendar: unknown;
+  searchBarText!: string;
 
   constructor(private facade: CalendarFacade) {
     this.facade.calendar$.subscribe(result => {

@@ -15,11 +15,11 @@ export class ConfigService {
       this.http
         .get(jsonFile)
         .toPromise()
-        .then((response: Config) => {
+        .then((response: unknown) => {
           ConfigService.settings = response as Config;
           resolve();
         })
-        .catch((response: any) => {
+        .catch((response: unknown) => {
           reject(
             `Could not load file '${jsonFile}': ${JSON.stringify(response)}`,
           );

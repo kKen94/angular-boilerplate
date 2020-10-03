@@ -1,8 +1,19 @@
 import Swal, {
   SweetAlertIcon,
   SweetAlertOptions,
+  SweetAlertPosition,
   SweetAlertResult,
 } from 'sweetalert2';
+
+interface SweetOptions {
+  icon: SweetAlertIcon;
+  toast: boolean;
+  position: SweetAlertPosition;
+  showConfirmButton: boolean;
+  timer: SweetAlertDuration;
+  html?: string;
+  title?: string;
+}
 
 export enum SweetAlertDuration {
   Medium,
@@ -28,7 +39,8 @@ export class SweetHelper {
    * @param message: testo del toast (stringa o html)
    * @param icon: tipo di toast
    * @param duration: durata del toast
-   * @param overridePrevious: specifica se il toast precedente deve essere sovrascritto dal nuovo
+   * @param overridePrevious:
+   * specifica se il toast precedente deve essere sovrascritto dal nuovo
    */
   static fireToast(
     message: string,
@@ -36,7 +48,7 @@ export class SweetHelper {
     duration = SweetAlertDuration.Medium,
     overridePrevious = false,
   ): void {
-    const options: any = {
+    const options: SweetOptions = {
       icon,
       toast: true,
       position: 'bottom-end',
@@ -52,12 +64,12 @@ export class SweetHelper {
   }
 
   private static fireLoop(
-    options: any,
+    options: SweetAlertOptions,
     overridePrevious = false,
     external = true,
   ): void {
     if (Swal.isVisible() && !overridePrevious && external) {
-      queue.push(options);
+      queue.push(options as never);
     } else {
       if (overridePrevious) {
         queue = [];
@@ -88,7 +100,8 @@ export class SweetHelper {
 
   /**
    * Restituisce la durata dell'alert espressa in millisecondi
-   * @param duration: l'enumeratore che decide quanto tempo deve rimanere visibile l'alert
+   * @param duration:
+   * l'enumeratore che decide quanto tempo deve rimanere visibile l'alert
    * @dynamic
    */
   private static duration(duration: SweetAlertDuration): number {
@@ -101,5 +114,6 @@ export class SweetHelper {
     if (duration === SweetAlertDuration.Long) {
       return 5000;
     }
+    return 2000;
   }
 }

@@ -26,16 +26,18 @@ module.exports = {
         test: /\.scss$/,
         loader: 'postcss-loader',
         options: {
-          ident: 'postcss',
-          syntax: 'postcss-scss',
-          plugins: () => [
-            require('postcss-import'),
-            require('tailwindcss'),
-            require('postcss-nested'),
-            require('postcss-custom-properties'),
-            require('autoprefixer'),
-            ...(process.env.NODE_ENV.trim() === "prod" || process.env.NODE_ENV.trim() === "staging") ? [purgecss] : [],
-          ],
+          postcssOptions: {
+            ident: 'postcss',
+            syntax: 'postcss-scss',
+            plugins: [
+              require('postcss-import'),
+              require('tailwindcss'),
+              require('postcss-nested'),
+              require('postcss-custom-properties'),
+              require('autoprefixer'),
+              ...(process.env.NODE_ENV.trim() === "prod" || process.env.NODE_ENV.trim() === "staging") ? [purgecss] : [],
+            ],
+          },
         },
       },
       {

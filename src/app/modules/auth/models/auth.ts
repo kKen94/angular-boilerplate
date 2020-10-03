@@ -32,3 +32,7 @@ export interface SignUpDto {
 export interface SignUpForm extends SignUpDto {
   confirmPassword: string;
 }
+
+export interface Token {
+  token: string;
+}

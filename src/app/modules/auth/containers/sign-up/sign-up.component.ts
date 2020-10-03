@@ -9,7 +9,7 @@ import { AuthFacade } from '../../auth.facade.service';
 })
 export class SignUpComponent {
   signUpForm: FormGroup;
-  isFormValid: boolean;
+  isFormValid!: boolean;
 
   constructor(private facade: AuthFacade, private fb: FormBuilder) {
     this.signUpForm = fb.group({

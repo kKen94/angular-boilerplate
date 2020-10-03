@@ -38,5 +38,5 @@ export namespace Navbar {
 
 export class SetMenu {
   static readonly type = '[Layout] Set menu';
-  constructor(public activeUrl: string) {}
+  constructor(public activeUrl: string | undefined) {}
 }

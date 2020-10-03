@@ -8,7 +8,7 @@ import { AuthFacade } from '../../auth.facade.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  isFormValid: boolean;
+  isFormValid!: boolean;
 
   constructor(private authFacade: AuthFacade, private fb: FormBuilder) {
     this.loginForm = fb.group({

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ModalModule } from '@components';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { CalendarApi } from './api/calendar.api.service';
@@ -17,12 +16,8 @@ const STATES = [CalendarState];
     CalendarRoutingModule,
     HomeModule,
     NgxsFormPluginModule,
-    ModalModule.forChild(),
     NgxsModule.forFeature(STATES),
   ],
-  providers: [
-    CalendarApi,
-    CalendarFacade,
-  ],
+  providers: [CalendarApi, CalendarFacade],
 })
 export class CalendarModule {}

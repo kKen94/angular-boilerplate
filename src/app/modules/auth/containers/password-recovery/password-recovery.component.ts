@@ -8,7 +8,7 @@ import { AuthFacade } from '../../auth.facade.service';
 })
 export class PasswordRecoveryComponent {
   recoveryForm: FormGroup;
-  isRecoveryValid: boolean;
+  isRecoveryValid!: boolean;
 
   constructor(private authFacade: AuthFacade, private fb: FormBuilder) {
     this.recoveryForm = fb.group({
