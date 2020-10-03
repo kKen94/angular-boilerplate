@@ -1,17 +1,39 @@
-/*
-  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
-  It is not intended to be used to perform a compilation.
-
-  To learn more about this file see: https://angular.io/config/solution-tsconfig.
-*/
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@core": ["src/app/core/index.ts"],
+      "@model": ["src/app/shared/models/index.ts"],
+      "@validator": ["src/app/shared/directives/validators/index.ts"],
+      "@layout": ["src/app/theme/layout/index.ts"],
+      "@utility": ["src/app/shared/utilities/index.ts"],
+      "@pipe": ["src/app/shared/pipes/pipe.module.ts"],
+      "@components": ["src/app/shared/components/index.ts"],
+      "@tailwind-config": ["tailwind.config.js"],
+      "@plugin/@ngxs": ["src/app/shared/plugins/@ngxs/index.ts"]
     }
-  ]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
 }
